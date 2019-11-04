@@ -60,7 +60,6 @@ public class Counter {
                 System.out.println("Please enter a legal integer.");
                 s = new Scanner(System.in);
             }
-
             switch (topChoice) {
                 case 1:
                     add(s);
