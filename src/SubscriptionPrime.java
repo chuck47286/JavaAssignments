@@ -65,7 +65,7 @@ public class SubscriptionPrime implements SubscriptionPrimeInterface {
     @Override
     public String toString() {
         return "SubscriptionPrime includes" +
-                "title= " + title  +
+                " title= " + title  +
                 ", email= " + email +
                 ", cost= " + cost +
                 ", deliveryAddress= " + deliveryAddress  +

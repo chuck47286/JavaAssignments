@@ -11,7 +11,7 @@ class SubscriptionTest {
     private Subscription subscription1;
     @BeforeEach
     void setUp() {
-        subscription1 = new Subscription("IEEE", "xxx@science.ac", 20);
+        subscription1 = new Subscription("IEEE", "xxx@science.ac", 10);
     }
 
     @Test

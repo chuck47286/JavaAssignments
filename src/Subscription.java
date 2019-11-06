@@ -56,7 +56,7 @@ public class Subscription implements SubscriptionInterface {
      */
     @Override
     public String toString() {
-        return "Subscription includes" +
+        return "Subscription includes " +
                 "title= " + title  +
                 ", email= " + email +
                 ", cost= " + cost +
