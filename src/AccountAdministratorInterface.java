@@ -39,7 +39,7 @@ public interface AccountAdministratorInterface {
     public void resetAccount(Account account, String password);
 
     /**
-     *  Method for an adminstrator to log in by providing a
+     *  Method for an administrator to log in by providing a
      *  password. It is checked whether the password provided is
      *  correct.
      *  @param password The password provided for the login; this is

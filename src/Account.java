@@ -141,4 +141,19 @@ public abstract class Account implements AccountInterface {
             this.password = newPassword;
         }
     }
+    /**
+     * Standard toString method to represent the object in a human
+     * readable form.
+     * @return The object in a human readable form.
+     */
+    @Override
+    public String toString() {
+        return "Account includes " +
+                "name= " + name +
+                ", salutation= " + salutation +
+                ", email= " + email +
+                ", password= " + password +
+                ", loggedIn= " + loggedIn +
+                ".";
+    }
 }

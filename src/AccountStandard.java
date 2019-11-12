@@ -5,6 +5,9 @@ import java.util.ArrayList;
  * has three additional field variables such as balance, titlesBought, failedLoginAttempts of types
  * int, ArrayList<MusicTitle> and int respectively and constant variable MAXIMAL_LOGIN_ATTEMPTS of
  * type int.
+ *
+ * @author YuCheng
+ * @version 2019-11-05
  */
 public class AccountStandard extends Account implements AccountStandardInterface {
     public static final int MAXIMAL_LOGIN_ATTEMPTS = 3;
@@ -51,6 +54,7 @@ public class AccountStandard extends Account implements AccountStandardInterface
      */
     @Override
     public void login(String password) {
+        super.login(password);
         if (super.getLoggedIn() || super.checkPassword(password)) {
             setFailedLoginAttempts(0);
         } else {
@@ -122,6 +126,19 @@ public class AccountStandard extends Account implements AccountStandardInterface
             throw new IllegalArgumentException("please pay money on your account.");
         }
     }
-
-
+    /**
+     * Standard toString method to represent the object in a human
+     * readable form. If the user is not logged in, only a warning
+     * should be printed, but no substantial information be given.
+     * @return The object in a human readable form.
+     */
+    @Override
+    public String toString() {
+        return "AccountStandard includes " +
+                "balance= " + balance +
+                ", titlesBought= " + titlesBought +
+                ", failedLoginAttempts= " + failedLoginAttempts +
+                 super.toString() +
+                ".";
+    }
 }
