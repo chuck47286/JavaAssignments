@@ -19,14 +19,14 @@ public abstract class Account implements AccountInterface {
      * @param salutation The salutation of the Account.
      * @param email The email of the Account.
      * @param password The password of the Account.
-     * @param loggedIn The loggedIn of the Account.
+     *
      */
-    public Account(String name, String salutation, String email, String password, boolean loggedIn) {
+    public Account(String name, String salutation, String email, String password) {
         this.name = name;
         this.salutation = salutation;
         this.email = email;
         this.password = password;
-        this.loggedIn = loggedIn;
+//        this.loggedIn = loggedIn;
     }
 
     /**

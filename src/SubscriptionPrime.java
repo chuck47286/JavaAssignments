@@ -5,10 +5,10 @@
  * @author YuCheng
  * @version 2019-11-05
  */
-public class SubscriptionPrime implements SubscriptionPrimeInterface {
-    private String title;
-    private String email;
-    private int cost;
+public class SubscriptionPrime extends Subscription implements SubscriptionPrimeInterface {
+//    private String title;
+//    private String email;
+//    private int cost;
     private String deliveryAddress;
 
     /**
@@ -19,9 +19,10 @@ public class SubscriptionPrime implements SubscriptionPrimeInterface {
      * @param deliveryAddress The deliveryAddress of the SubscriptionPrime.
      */
     public SubscriptionPrime(String title, String email, int cost, String deliveryAddress) {
-        this.title = title;
-        this.email = email;
-        this.cost = cost;
+        super(title, email,cost);
+//        this.title = title;
+//        this.email = email;
+//        this.cost = cost;
         this.deliveryAddress = deliveryAddress;
     }
 
@@ -39,7 +40,7 @@ public class SubscriptionPrime implements SubscriptionPrimeInterface {
      */
     @Override
     public String getTitle() {
-        return this.title;
+        return super.getTitle();
     }
     /**
      * A standard getter method to get the email of the SubscriptionPrime.
@@ -47,7 +48,7 @@ public class SubscriptionPrime implements SubscriptionPrimeInterface {
      */
     @Override
     public String getEmail() {
-        return this.email;
+        return super.getEmail();
     }
     /**
      * A standard getter method to get the cost of the SubscriptionPrime.
@@ -55,7 +56,7 @@ public class SubscriptionPrime implements SubscriptionPrimeInterface {
      */
     @Override
     public int getCost() {
-        return this.cost;
+        return super.getCost();
     }
     /**
      *
@@ -65,9 +66,9 @@ public class SubscriptionPrime implements SubscriptionPrimeInterface {
     @Override
     public String toString() {
         return "SubscriptionPrime includes" +
-                " title= " + title  +
-                ", email= " + email +
-                ", cost= " + cost +
+                " title= " + super.getTitle()  +
+                ", email= " + super.getEmail() +
+                ", cost= " + super.getCost() +
                 ", deliveryAddress= " + deliveryAddress  +
                 ".";
     }

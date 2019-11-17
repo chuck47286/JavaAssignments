@@ -15,14 +15,13 @@ class AccountStandardTest {
     @BeforeEach
     void setUp() {
         account1 = new AccountStandard(
-                "Bob", "Mr","123@gmail.com","123",false,
-                0, new ArrayList<MusicTitle>(), 0);
+                "Bob", "Mr","123@gmail.com","123");
     }
 
     @Test
     void login() {
-        boolean expected = true;
-        String attemptpassword = "123";
+        boolean expected = false;
+        String attemptpassword = "111";
         account1.login(attemptpassword);
         assertEquals(expected, account1.getLoggedIn());
     }
@@ -57,7 +56,7 @@ class AccountStandardTest {
     @Test
     void getSalutation() {
         String expected = "Mr";
-        String actual = account1.getName();
+        String actual = account1.getSalutation();
         assertEquals(expected,actual);
     }
 
@@ -104,12 +103,12 @@ class AccountStandardTest {
         int actual = accountStandard1.getBalance();
         assertEquals(expected,actual);
     }
-
+    // ???
     @Test
     void testLogin() {
-        int expected = 1;
+        int expected = 0;
         AccountStandard accountStandard1 = (AccountStandard) account1;
-        accountStandard1.login("111");
+        accountStandard1.login("123");
         assertEquals(expected,accountStandard1.getFailedLoginAttempts());
     }
 
@@ -139,8 +138,9 @@ class AccountStandardTest {
 
     @Test
     void getFailedLoginAttempts() {
-        int expected = 0;
+        int expected = 1;
         AccountStandard accountStandard1 = (AccountStandard) account1;
+        accountStandard1.login("111");
         int actual = accountStandard1.getFailedLoginAttempts();
         assertEquals(expected,actual);
     }
@@ -170,5 +170,8 @@ class AccountStandardTest {
 
     @Test
     void testToString() {
+        /*String expected = "";
+        String actual = account1.toString();
+        assertEquals(expected, actual);*/
     }
 }

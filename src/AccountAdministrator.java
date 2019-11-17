@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @version 2019-11-06
  */
 public class AccountAdministrator extends Account implements AccountAdministratorInterface {
-    private ArrayList<AccountStandard> accounts;
+    private ArrayList<Account> accounts;
 
     /**
      *
@@ -17,13 +17,11 @@ public class AccountAdministrator extends Account implements AccountAdministrato
      * @param salutation The salutation of the AccountAdministrator.
      * @param email The email of the AccountAdministrator.
      * @param password The password of the AccountAdministrator.
-     * @param loggedIn The loggedIn of the AccountAdministrator.
-     * @param accounts The accounts of the AccountAdministrator.
+     *
      */
-    public AccountAdministrator(String name, String salutation, String email, String password, boolean loggedIn,
-                                ArrayList<AccountStandard> accounts) {
-        super(name, salutation, email, password, loggedIn);
-        this.accounts = accounts;
+    public AccountAdministrator(String name, String salutation, String email, String password) {
+        super(name, salutation, email, password);
+//        this.accounts = accounts;
     }
 
     /**
@@ -33,7 +31,10 @@ public class AccountAdministrator extends Account implements AccountAdministrato
      */
     @Override
     public ArrayList<Account> getAccounts() {
-        return new ArrayList<>(accounts);
+        if (this.accounts == null) {
+            this.accounts = new ArrayList<>();
+        }
+        return this.accounts;
     }
     /**
      *  The method adds an account to the list of accounts the
@@ -43,7 +44,10 @@ public class AccountAdministrator extends Account implements AccountAdministrato
      */
     @Override
     public void addAccount(Account account) {
-        this.accounts.add((AccountStandard) account);
+        if (this.accounts == null) {
+            this.accounts = new ArrayList<>();
+        }
+        this.accounts.add(account);
     }
     /**
      *  If an account can no longer be used, since either the user has
@@ -58,10 +62,19 @@ public class AccountAdministrator extends Account implements AccountAdministrato
      */
     @Override
     public void resetAccount(Account account, String password) {
-        AccountStandard accountStandard = (AccountStandard) account;
-        accountStandard.setPassword(password);
-        accountStandard.setFailedLoginAttempts(0);
-        addAccount(accountStandard);
+        if (this.getLoggedIn()) {
+            if (account instanceof AccountStandard) {
+                AccountStandard accountStandard = (AccountStandard) account;
+                accountStandard.setPassword(password);
+                accountStandard.setFailedLoginAttempts(0);
+                addAccount(accountStandard);
+            } else {
+                account.setPassword(password);
+                addAccount(account);
+            }
+        }
+
+
     }
 
     /**
@@ -73,10 +86,11 @@ public class AccountAdministrator extends Account implements AccountAdministrato
      *                 to be compared to the password stored on the system.
      */
     public void login(String password) {
-        if (super.checkPassword(password)) {
-            throw new IllegalArgumentException("your password is correct");
-        } else {
-            throw new IllegalArgumentException("your password is incorrect");
+        try {
+
+            super.login(password);
+        } catch (IllegalArgumentException e) {
+            System.out.println("your password is wrong");
         }
     }
 

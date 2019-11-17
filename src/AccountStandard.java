@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class AccountStandard extends Account implements AccountStandardInterface {
     public static final int MAXIMAL_LOGIN_ATTEMPTS = 3;
     private int balance;
-    private ArrayList<MusicTitle> titlesBought;
+    private ArrayList<MusicTitle> titlesBought = new ArrayList<>();
     private int failedLoginAttempts;
 
     /**
@@ -21,17 +21,12 @@ public class AccountStandard extends Account implements AccountStandardInterface
      * @param salutation The salutation of the AccountStandard.
      * @param email The email of the AccountStandard.
      * @param password The password of the AccountStandard.
-     * @param loggedIn The loggedIn of the AccountStandard.
-     * @param balance The balance of the AccountStandard.
-     * @param titlesBought The titlesBought of the AccountStandard.
-     * @param failedLoginAttempts The failedLoginAttempts of the AccountStandard.
      */
-    public AccountStandard(String name, String salutation, String email, String password, boolean loggedIn,
-                           int balance, ArrayList<MusicTitle> titlesBought, int failedLoginAttempts) {
-        super(name, salutation, email, password, loggedIn);
-        this.balance = balance;
-        this.titlesBought = titlesBought;
-        this.failedLoginAttempts = failedLoginAttempts;
+    public AccountStandard(String name, String salutation, String email, String password) {
+        super(name, salutation, email, password);
+//        this.balance = balance;
+//        this.titlesBought = titlesBought;
+//        this.failedLoginAttempts = failedLoginAttempts;
     }
 
     /**
@@ -54,13 +49,20 @@ public class AccountStandard extends Account implements AccountStandardInterface
      */
     @Override
     public void login(String password) {
-        super.login(password);
-        if (super.getLoggedIn() || super.checkPassword(password)) {
+//        super.login(password);
+        /*if (super.login(password)) {
             setFailedLoginAttempts(0);
         } else {
             this.failedLoginAttempts = getFailedLoginAttempts() + 1;
+        }*/
+        try {
+            super.login(password);
+            setFailedLoginAttempts(0);
+        } catch (IllegalArgumentException e) {
+            this.failedLoginAttempts = getFailedLoginAttempts() + 1;
         }
     }
+
     /**
      * Getter method to return the list of all titles bought by the user.
      * @return The current list of titles bought by the user.
@@ -120,11 +122,12 @@ public class AccountStandard extends Account implements AccountStandardInterface
         if (super.getLoggedIn() && getBalance() > 0) {
             titlesBought.add(musicTitle);
             this.balance = getBalance() - musicTitle.getPrice();
-        } else if (!super.getLoggedIn()) {
+        }
+        /*else if (!super.getLoggedIn()) {
             throw new IllegalArgumentException("you are not logged.");
         } else if (getBalance() <= 0) {
             throw new IllegalArgumentException("please pay money on your account.");
-        }
+        }*/
     }
     /**
      * Standard toString method to represent the object in a human
