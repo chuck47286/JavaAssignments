@@ -18,42 +18,42 @@ class AeroplaneTest {
     void setPassengerNumber() {
         int expected = 880;
         aeroplane1.setPassengerNumber(880);
-        assertEquals(expected, aeroplane1.getPassengerNumber());
+        Assertions.assertEquals(expected, aeroplane1.getPassengerNumber());
     }
 
     @Test
     void setMaxSpeed() {
         int expedted = 190;
         aeroplane1.setMaxSpeed(190);
-        assertEquals(expedted, aeroplane1.getMaxSpeed());
+        Assertions.assertEquals(expedted, aeroplane1.getMaxSpeed());
     }
 
     @Test
     void getPassengerNumber() {
         int expected = 180;
         int actual = aeroplane1.getPassengerNumber();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getMaxSpeed() {
         int expected = 780;
         int actual = aeroplane1.getMaxSpeed();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getFuelConsumption() {
         double expected = 100;
         double actual = aeroplane1.getFuelConsumption();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void setFuelConsumption() {
         double expected = 120;
         aeroplane1.setFuelConsumption(120);
-        assertEquals(expected, aeroplane1.getFuelConsumption());
+        Assertions.assertEquals(expected, aeroplane1.getFuelConsumption());
     }
 
     @Test
@@ -61,6 +61,6 @@ class AeroplaneTest {
         String expected = "Aeroplane has fuelConsumption= 100.0, and Aircraft has " +
                 "passengerNumber= 180, maxSpeed= 780";
         String actual = aeroplane1.toString();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 }

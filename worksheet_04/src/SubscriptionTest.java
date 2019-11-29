@@ -18,27 +18,27 @@ class SubscriptionTest {
     void getTitle() {
         String expected = "IEEE";
         String actual = subscription1.getTitle();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getEmail() {
         String expected = "xxx@science.ac";
         String actual = subscription1.getEmail();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getCost() {
         int expected = 10;
         int actual = subscription1.getCost();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void testToString() {
         String expected = "Subscription includes title= IEEE, email= xxx@science.ac, cost= 10.";
         String actual = subscription1.toString();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 }

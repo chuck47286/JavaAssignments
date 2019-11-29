@@ -23,56 +23,56 @@ class AccountAdministratorTest {
         boolean expected = false;
         String attemptpassword = "111";
         account1.login(attemptpassword);
-        assertEquals(expected, account1.getLoggedIn());
+        Assertions.assertEquals(expected, account1.getLoggedIn());
     }
 
     @Test
     void getLoggedIn() {
         boolean expected = false;
         boolean actual = account1.getLoggedIn();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void setLoggedIn() {
         boolean expected = true;
         account1.setLoggedIn(true);
-        assertEquals(expected, account1.getLoggedIn());
+        Assertions.assertEquals(expected, account1.getLoggedIn());
     }
 
     @Test
     void logout() {
         boolean expected = false;
         boolean actual = account1.getLoggedIn();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getName() {
         String expected = "Greece";
         String actual = account1.getName();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getSalutation() {
         String expected = "Ms";
         String actual =account1.getSalutation();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getEmail() {
         String expected = "321@gmail.com";
         String actual = account1.getEmail();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getPassword() {
         String expected = "321";
         String actual = account1.getPassword();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
 
@@ -80,7 +80,7 @@ class AccountAdministratorTest {
     void setPassword() {
         String expected = "666";
         account1.setPassword("666");
-        assertEquals(expected, account1.getPassword());
+        Assertions.assertEquals(expected, account1.getPassword());
     }
 
     @Test
@@ -88,14 +88,14 @@ class AccountAdministratorTest {
         boolean expected = false;
         String attemptpassword = "666";
         boolean actual = account1.checkPassword(attemptpassword);
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void changePassword() {
         String expected = "666";
         account1.changePassword("321","666");
-        assertEquals(expected, account1.getPassword());
+        Assertions.assertEquals(expected, account1.getPassword());
     }
 
 
@@ -103,7 +103,7 @@ class AccountAdministratorTest {
     void getAccounts() {
         AccountAdministrator accountAdministrator1 = (AccountAdministrator) account1;
         ArrayList<Account> expected = new ArrayList();
-        assertEquals(expected, accountAdministrator1.getAccounts());
+        Assertions.assertEquals(expected, accountAdministrator1.getAccounts());
     }
 
     @Test
@@ -113,7 +113,7 @@ class AccountAdministratorTest {
         accountAdministrator1.addAccount(customer);
         ArrayList<Account> expected = new ArrayList<>();
         expected.add(customer);
-        assertEquals(expected,accountAdministrator1.getAccounts());
+        Assertions.assertEquals(expected,accountAdministrator1.getAccounts());
     }
 
     @Test
@@ -124,11 +124,11 @@ class AccountAdministratorTest {
 
         accountAdministrator1.resetAccount(customer, "666");
         String expectedPassword = "123";
-        assertTrue(customer.checkPassword(expectedPassword));
+        Assertions.assertTrue(customer.checkPassword(expectedPassword));
 
         int expectedFailedLoginAttempts = 1;
         int actualFailLoginAttempts = ((AccountStandard) customer).getFailedLoginAttempts();
-        assertEquals(expectedFailedLoginAttempts, actualFailLoginAttempts);
+        Assertions.assertEquals(expectedFailedLoginAttempts, actualFailLoginAttempts);
 
     }
 
@@ -137,7 +137,7 @@ class AccountAdministratorTest {
         AccountAdministrator accountAdministrator1 = (AccountAdministrator) account1;
         boolean expected = true;
         accountAdministrator1.login("321");
-        assertEquals(expected,accountAdministrator1.getLoggedIn());
+        Assertions.assertEquals(expected,accountAdministrator1.getLoggedIn());
     }
 
 }

@@ -18,20 +18,20 @@ class MusicTitleTest {
     void getTitle() {
         String expected = "When we were young";
         String actual = musicTitle1.getTitle();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getArtist() {
         String expected = "Adele";
         String actual = musicTitle1.getArtist();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void getPrice() {
         int expected = 10;
         int actual = musicTitle1.getPrice();
-        assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 }

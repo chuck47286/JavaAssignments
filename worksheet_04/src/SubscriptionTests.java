@@ -1,4 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +28,7 @@ public class SubscriptionTests {
   public void test1() {
     String expectedTitle = "Financial Times";
     String actualTitle = sub1.getTitle();
-    assertEquals(expectedTitle, actualTitle, "title should be: " + actualTitle);
+    Assertions.assertEquals(expectedTitle, actualTitle, "title should be: " + actualTitle);
   }
 
   // testing sub1's getEmail()
@@ -34,7 +36,7 @@ public class SubscriptionTests {
   public void test2() {
     String expectedEmail = "mary@mary.org";
     String actualEmail = sub1.getEmail();
-    assertEquals(expectedEmail, actualEmail, "mail should be: " + actualEmail);
+    Assertions.assertEquals(expectedEmail, actualEmail, "mail should be: " + actualEmail);
   }
 
   // testing sub1's getCost()
@@ -42,7 +44,7 @@ public class SubscriptionTests {
   public void test3() {
     int expectedCost = 2;
     int actualCost = sub1.getCost();
-    assertEquals(expectedCost, actualCost, "cost should be: " + actualCost);
+    Assertions.assertEquals(expectedCost, actualCost, "cost should be: " + actualCost);
   }
 
   // testing subPrime1's getTitle()
@@ -50,7 +52,7 @@ public class SubscriptionTests {
   public void test4() {
     String expectedTitle = "Garden News";
     String actualTitle = subPrime1.getTitle();
-    assertEquals(expectedTitle, actualTitle, "title should be: " + actualTitle);
+    Assertions.assertEquals(expectedTitle, actualTitle, "title should be: " + actualTitle);
   }
 
   // testing subPrime1's getEmail()
@@ -58,7 +60,7 @@ public class SubscriptionTests {
   public void test5() {
     String expectedEmail = "josh@josh.org";
     String actualEmail = subPrime1.getEmail();
-    assertEquals(expectedEmail, actualEmail, "mail should be: " + actualEmail);
+    Assertions.assertEquals(expectedEmail, actualEmail, "mail should be: " + actualEmail);
 
   }
 
@@ -67,7 +69,7 @@ public class SubscriptionTests {
   public void test6() {
     int expectedCost = 3;
     int actualCost = subPrime1.getCost();
-    assertEquals(expectedCost, actualCost, "cost should be: " + actualCost);
+    Assertions.assertEquals(expectedCost, actualCost, "cost should be: " + actualCost);
   }
 
   // testing subPrime1's getAddress()
@@ -75,7 +77,7 @@ public class SubscriptionTests {
   public void test7() {
     String expectedDeliveryAddress = "CS Birmingham";
     String actualDeliveryAddress = subPrime1.getAddress();
-    assertEquals(expectedDeliveryAddress, actualDeliveryAddress,
+    Assertions.assertEquals(expectedDeliveryAddress, actualDeliveryAddress,
         "address should be: " + actualDeliveryAddress);
   }
 
@@ -86,7 +88,7 @@ public class SubscriptionTests {
         new SubscriptionPrime("Garden News", "josh@josh.org", 3, "New Street 5005");
     String expectedAddress = "New Street 5005";
     String actualAddress = subPrime2.getAddress();
-    assertEquals(expectedAddress, actualAddress, "address should be: " + actualAddress);
+    Assertions.assertEquals(expectedAddress, actualAddress, "address should be: " + actualAddress);
   }
 
   // testing sub2's getTitle
@@ -94,7 +96,7 @@ public class SubscriptionTests {
   public void test9() {
     String expectedTitle = "Athletic News";
     String actualTitle = sub2.getTitle();
-    assertEquals(expectedTitle, actualTitle, "title should be: " + actualTitle);
+    Assertions.assertEquals(expectedTitle, actualTitle, "title should be: " + actualTitle);
   }
 
   // testing sub2's getEmail()
@@ -102,7 +104,7 @@ public class SubscriptionTests {
   public void test10() {
     String expectedEmail = "jack@jack.org";
     String actualEmail = sub2.getEmail();
-    assertEquals(expectedEmail, actualEmail, "email should be: " + actualEmail);
+    Assertions.assertEquals(expectedEmail, actualEmail, "email should be: " + actualEmail);
   }
 
   // testing sub2's getCost()
@@ -110,6 +112,6 @@ public class SubscriptionTests {
   public void test11() {
     int expectedCost = 4;
     int actualCost = sub2.getCost();
-    assertEquals(expectedCost, actualCost, "cost should be: " + actualCost);
+    Assertions.assertEquals(expectedCost, actualCost, "cost should be: " + actualCost);
   }
 }

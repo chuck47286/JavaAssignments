@@ -18,32 +18,32 @@ class AircraftTest {
     void setPassengerNumber() {
         int expected = 190;
         aircraft1.setPassengerNumber(190);
-        assertEquals(expected, aircraft1.getPassengerNumber());
+        Assertions.assertEquals(expected, aircraft1.getPassengerNumber());
     }
 
     @Test
     void setMaxSpeed() {
         int expected = 880;
         aircraft1.setMaxSpeed(880);
-        assertEquals(expected, aircraft1.getMaxSpeed());
+        Assertions.assertEquals(expected, aircraft1.getMaxSpeed());
     }
 
     @Test
     void getPassengerNumber() {
         int expected = 180;
-        assertEquals(expected, aircraft1.getPassengerNumber());
+        Assertions.assertEquals(expected, aircraft1.getPassengerNumber());
     }
 
     @Test
     void getMaxSpeed() {
         int expected = 780;
-        assertEquals(expected, aircraft1.getMaxSpeed());
+        Assertions.assertEquals(expected, aircraft1.getMaxSpeed());
     }
 
     @Test
     void testToString() {
         String expected = "Aircraft has passengerNumber= 180, maxSpeed= 780";
         String actual = aircraft1.toString();
-        assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 }

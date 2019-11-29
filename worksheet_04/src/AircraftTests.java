@@ -27,11 +27,11 @@ public class AircraftTests {
 
     int expectedNumOfPassengers = 300;
     int actualNumOfPassengers = aircraft1.getPassengerNumber();
-    assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
+    Assertions.assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
 
     int expectedMaxSpeed = 870;
     int actualMaxSpeed = aircraft1.getMaxSpeed();
-    assertEquals(expectedMaxSpeed, actualMaxSpeed);
+    Assertions.assertEquals(expectedMaxSpeed, actualMaxSpeed);
   }
 
   // testing getters of aeroplane
@@ -40,15 +40,15 @@ public class AircraftTests {
 
     int expectedNumOfPassengers = 350;
     int actualNumOfPassengers = aeroplane.getPassengerNumber();
-    assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
+    Assertions.assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
 
     int expectedMaxSpeed = 850;
     int actualMaxSpeed = aeroplane.getMaxSpeed();
-    assertEquals(expectedMaxSpeed, actualMaxSpeed);
+    Assertions.assertEquals(expectedMaxSpeed, actualMaxSpeed);
 
     double expectedFuelCons = 13;
     double actualFuelCons = aeroplane.getFuelConsumption();
-    assertEquals(expectedFuelCons, actualFuelCons, TOLERANCE);
+    Assertions.assertEquals(expectedFuelCons, actualFuelCons, TOLERANCE);
   }
 
   // testing setters of aircraft1
@@ -58,12 +58,12 @@ public class AircraftTests {
     aircraft1.setPassengerNumber(320);
     int expectedNumOfPassengers = 320;
     int actualNumOfPassengers = aircraft1.getPassengerNumber();
-    assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
+    Assertions.assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
 
     aircraft1.setMaxSpeed(770);
     int expectedMaxSpeed = 770;
     int actualMaxSpeed = aircraft1.getMaxSpeed();
-    assertEquals(expectedMaxSpeed, actualMaxSpeed);
+    Assertions.assertEquals(expectedMaxSpeed, actualMaxSpeed);
   }
 
   // testing setters of aeroplane
@@ -73,18 +73,18 @@ public class AircraftTests {
     aeroplane.setPassengerNumber(365);
     int expectedNumOfPassengers = 365;
     int actualNumOfPassengers = aeroplane.getPassengerNumber();
-    assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
+    Assertions.assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
 
     aeroplane.setMaxSpeed(863);
     int expectedMaxSpeed = 863;
     int actualMaxSpeed = aeroplane.getMaxSpeed();
-    assertEquals(expectedMaxSpeed, actualMaxSpeed);
+    Assertions.assertEquals(expectedMaxSpeed, actualMaxSpeed);
 
 
     aeroplane.setFuelConsumption(13.95);
     double expectedFuelCons = 13.95;
     double actualFuelCons = aeroplane.getFuelConsumption();
-    assertEquals(expectedFuelCons, actualFuelCons, TOLERANCE);
+    Assertions.assertEquals(expectedFuelCons, actualFuelCons, TOLERANCE);
   }
 
 
@@ -94,11 +94,11 @@ public class AircraftTests {
 
     int expectedNumOfPassengers = 280;
     int actualNumOfPassengers = aircraft2.getPassengerNumber();
-    assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
+    Assertions.assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
 
     int expectedMaxSpeed = 800;
     int actualMaxSpeed = aircraft2.getMaxSpeed();
-    assertEquals(expectedMaxSpeed, actualMaxSpeed);
+    Assertions.assertEquals(expectedMaxSpeed, actualMaxSpeed);
   }
 
   // testing setters of aircraft2
@@ -108,11 +108,11 @@ public class AircraftTests {
     aircraft2.setPassengerNumber(290);
     int expectedNumOfPassengers = 290;
     int actualNumOfPassengers = aircraft2.getPassengerNumber();
-    assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
+    Assertions.assertEquals(expectedNumOfPassengers, actualNumOfPassengers);
 
     aircraft2.setMaxSpeed(835);
     int expectedMaxSpeed = 835;
     int actualMaxSpeed = aircraft2.getMaxSpeed();
-    assertEquals(expectedMaxSpeed, actualMaxSpeed);
+    Assertions.assertEquals(expectedMaxSpeed, actualMaxSpeed);
   }
 }
