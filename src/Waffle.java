@@ -54,8 +54,8 @@ public class Waffle extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 1200, 680);
 
-        drawchart(root, percentage);
-        drawtext(root, description);
+        drawchart(root);
+        drawtext(root);
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -65,9 +65,8 @@ public class Waffle extends Application {
     /**
      * The method is to draw the table to show the percentage of the certain expenditure.
      * @param root The group of the graph in the scene.
-     * @param percentage The percentage of certain expenditure.
      */
-    private static void drawchart(Group root, int[] percentage) {
+    private static void drawchart(Group root) {
         Rectangle[][] squares = new Rectangle[10][10];
         for (int i=0; i<10; i++){
             for (int j=0; j<10; j++){
@@ -82,9 +81,8 @@ public class Waffle extends Application {
     /**
      * The method is to draw the text which could list all the category of the expenditure.
      * @param root The group of the graph would be drawn in the scene.
-     * @param description The description of the certain expenditure.
      */
-    private static void drawtext(Group root, String[] description) {
+    private static void drawtext(Group root) {
         Text text;
         int maximum = description.length;
         for (int i = 0; i < maximum; i++) {

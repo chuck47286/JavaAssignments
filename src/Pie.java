@@ -46,7 +46,7 @@ public class Pie extends Application {
         Group root = new Group();
         Scene scene = new Scene(root,980, 680);
 
-        drawCircle(root, percentage);
+        drawCircle(root);
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -55,7 +55,7 @@ public class Pie extends Application {
      * The method is to draw the circle chart.
      * @param root The group of the graph.
      */
-    private void drawCircle(Group root, Double[] percentage) {
+    private void drawCircle(Group root) {
         Circle circle = new Circle(CEN_X, CEN_Y, RADIUS);
         circle.setFill(null);
         circle.setStroke(Color.BLACK);
@@ -65,8 +65,8 @@ public class Pie extends Application {
         Text[] texts = new Text[percentage.length];
         lines[0] = new Line(CEN_X, CEN_Y,CEN_X +RADIUS,CEN_Y);
         texts[0] = new Text(
-                CEN_X + 1.25 * RADIUS*Math.cos(percentage[0] / 2 * Math.PI / 180 ) ,
-                CEN_Y - 1.25 * RADIUS*Math.sin(percentage[0] / 2 * Math.PI / 180 ) ,
+                CEN_X + 1.15 * RADIUS*Math.cos(percentage[0] / 2 * Math.PI / 180 ) ,
+                CEN_Y - 1.15 * RADIUS*Math.sin(percentage[0] / 2 * Math.PI / 180 ) ,
                 String.format("%s", description[0])
         );
         for (int i = 1; i < percentage.length; i++) {
@@ -75,9 +75,9 @@ public class Pie extends Application {
                     CEN_Y - RADIUS*Math.sin(percentage[i - 1] * Math.PI / 180)
             );
             texts[i] = new Text(
-                    CEN_X + 1.25 * RADIUS*Math.cos(
+                    CEN_X + 1.15 * RADIUS*Math.cos(
                             (percentage[i - 1] + percentage[i]) / 2 * Math.PI / 180 ) ,
-                    CEN_Y - 1.25 * RADIUS*Math.sin(
+                    CEN_Y - 1.15 * RADIUS*Math.sin(
                             (percentage[i - 1] + percentage[i]) / 2 * Math.PI / 180 ) ,
                     String.format("%s", description[i])
             );
