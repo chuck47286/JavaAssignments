@@ -49,10 +49,12 @@ public class DrawRectangle extends Application{
      */
     @Override
     public void start(Stage stage) throws Exception {
-        Rectangle rectangle = new Rectangle(20, 30, 200, 150);
-        rectangle.setFill(Color.BLUE);
+        Rectangle rectangle1 = new Rectangle(400, 30, 200, 150);
+        Rectangle rectangle2 = new Rectangle(200, 30, 200, 150);
+        rectangle1.setFill(Color.BLUE);
         //Creating a scene graph, consisting of the rectangle only. 
-        Group root = new Group(rectangle);
+        Group root = new Group();
+        root.getChildren().addAll(rectangle1,rectangle2);
         //The scene containing one scene graph
         Scene scene = new Scene(root, 600, 300);
         stage.setTitle("Rectangle");

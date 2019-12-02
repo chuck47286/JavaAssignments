@@ -30,7 +30,8 @@ public class DrawSimplePolygon extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         //Creating a line object 
-        Polygon polygon = new Polygon(210,10, 10,210, 410,210); 
+//        Polygon polygon = new Polygon(210,10, 10,210, 410,210);
+        Polygon polygon = new Polygon(10, 10, 20,10, 20,70, 10,70);
         /* Alternatively, create an empty polygon by
          *  Polygon polygon = new Polygon(); 
          * and then add the 3 points:
@@ -61,7 +62,7 @@ public class DrawSimplePolygon extends Application{
     /*
      *  main method to launch the application.
      */
-    public static void main(String[] args) { 
-        launch(args);
-    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 }

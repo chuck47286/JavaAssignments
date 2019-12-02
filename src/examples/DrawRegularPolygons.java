@@ -39,9 +39,13 @@ public class DrawRegularPolygons extends Application{
          * Here all vertices are equally distributed on a circle.
          */
 	for (int i = 0; i< vertices; i++){
-            coordinates[2*i] = xOffset + 
+            /*coordinates[2*i] = xOffset +
                 scale * Math.cos(rotation + 2*i*Math.PI/vertices);
             coordinates[2*i+1] = yOffset + 
+                scale * Math.sin(rotation + 2*i*Math.PI/vertices);*/
+            coordinates[2*i] = xOffset +
+                scale * Math.cos(rotation + 2*i*Math.PI/vertices);
+            coordinates[2*i+1] = yOffset +
                 scale * Math.sin(rotation + 2*i*Math.PI/vertices);
         }
 
@@ -83,12 +87,15 @@ public class DrawRegularPolygons extends Application{
      *  main method to launch the application.
      */
     public static void main(String[] args) { 
-        Polygon polygon1 = makePolygon( 7, 0.0, 100.0, 130.0, 130.0);
-        Polygon polygon2 = makePolygon(12, 0.3,  80.0, 330.0, 130.0);
-//        Polygon polygon3 = makePolygon(6, 0.0,  200.0, 530.0, 130.0);
-
-        Polygon[] poly = {polygon1, polygon2};
+//        Polygon polygon1 = makePolygon( 7, 0.0, 100.0, 130.0, 130.0);
+//        Polygon polygon2 = makePolygon(12, 0.3,  80.0, 330.0, 130.0);
+//        Polygon polygon3 = makePolygon(6, 0.0,  80.0, 530.0, 130.0);
+        Polygon polygon3 = makePolygon(4, 90.0,  80.0, 150.0, 150.0);
+        Polygon polygon4 = makePolygon(4, 0.0,  80.0, 350.0, 150.0);
+        Polygon polygon5 = makePolygon(4, 180.0,  80.0, 550.0, 150.0);
+//        Polygon[] poly = {polygon1, polygon2};
 //        Polygon[] poly = {polygon1, polygon2, polygon3};
+        Polygon[] poly = { polygon3,polygon4,polygon5};
 
         polygons = poly;
         launch(args);

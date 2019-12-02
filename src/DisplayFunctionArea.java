@@ -32,6 +32,16 @@ public class DisplayFunctionArea extends Application{
      *  defined in the main method.
      */
     private static Function<Double,Double> f;
+    /** min is an approximation of the minimum of f in the interval
+     * [a,b]. It is introduced as a global variable so that it does
+     * not have to be recomputed.
+     */
+    private static double min;
+    /** min is an approximation of the minimum of f in the interval
+     * [a,b]. It is introduced as a global variable so that it does
+     * not have to be recomputed.
+     */
+    private static double max;
     /**
      * a is the left border of the interval on which the function is
      * to be displayed. We introduce it as a global variable so that
@@ -87,13 +97,25 @@ public class DisplayFunctionArea extends Application{
              * for a, b and n-1 equidistant values in between.
              * The (x_i,y_i) values are added to the points array in pairs.
              */
-            for (int i = 0; i <= n ; i++){
-                x = a + (b - a) * i / n;
+            points[0] = 0;
+            points[1] = (max-0) * Y_SIZE/(max-min);
+            for (int i = 1; i <= n + 1; i++){
+                x = a + (b - a) * (i - 1) / n;
+                y = f.apply(x);
+                points[2*i] = (x-a) * X_SIZE/(b-a);
+                points[2*i+1] = (max - y)* Y_SIZE/(max-min);
+//                points[4*i+2] = (x-a) * X_SIZE/(b-a);
+//                points[4*i+3] = (max-0) * Y_SIZE/(max-min);
+//                (max-0) * Y_SIZE/(max-min)
+                /*x = a + (b - a) * i / n;
                 y = f.apply(x);
                 points[2*i]   = x;
-                points[2*i+1] = y;
+                points[2*i+1] = y;*/
             }
+            points[2 *n + 4] = points[2 *n +2];
+            points[2 *n + 5] = (max-0) * Y_SIZE/(max-min);
             /* Draw graph */
+
             return new Polygon(points);
         }
     }
@@ -116,14 +138,23 @@ public class DisplayFunctionArea extends Application{
             double x, y;
             /* Loop: Add x and y values to the corresponding arrays
              * for a, b and n-1 equidistant values in between.
-             * The (x_i,y_i) values are added to the points array in pairs.
              */
+            for (int i = 0; i <= n ; i++){
+                x = a + (b - a) * i / n;
+                y = f.apply(x);
+                points[2*i]   = (x-a) * X_SIZE/(b-a);
+                points[2*i+1] = (max - y)* Y_SIZE/(max-min);
+            }
+            /* Loop: Add x and y values to the corresponding arrays
+             * for a, b and n-1 equidistant values in between.
+             * The (x_i,y_i) values are added to the points array in pairs.
+             *//*
             for (int i = 0; i <= n ; i++){
                 x = a + (b - a) * i / n;
                 y = f.apply(x);
                 points[2*i]   = x;
                 points[2*i+1] = y;
-            }
+            }*/
             /* Draw graph */
             Polyline result = new Polyline(points);
             result.setStrokeWidth(3);
@@ -131,17 +162,88 @@ public class DisplayFunctionArea extends Application{
         }
     }
     /**
+     *   The method approximates the maximal value of the function f
+     *   in the interval [a,b] by dividing the interval in n equal
+     *   parts and evaluating the function at the (n+1) different
+     *   elements. It is assumed that b is greater than a.
+     *   @param f The function to be evaluated.
+     *   @param n The number of points to be evaluated.
+     *   @param a The lowest x-value to be considered.
+     *   @param b The highest x-value to be considered.
+     *   @return An approximation of the maximal value of f in the
+     *   interval [a,b] (evaluated at a and b, and at the n-1
+     *   equidistant values in between).
+     */
+    public static double max(Function<Double,Double> f, int n,
+                             double a, double b) {
+        double x, y;
+        double max = f.apply(a);
+        double delta = (b - a)/n;
+        /* Loop invariant: max contains the maximum of all values of
+         * the function f(x) considered so far, i.e., the maximum of
+         * f(a), f(a + delta), f(a + 2 * delta), ..., f(a + i * delta).
+         * Consider for i = 0: f(a); for i = n: f(b).
+         */
+        for (int i = 0; i <= n ; i++){
+            x = a + delta * i;
+            y = f.apply(x);
+            if (y > max) {
+                max = y;
+            }
+        }
+        return max;
+    }
+
+    /**
+     *   The method approximates the minimal value of the function f
+     *   in the interval [a,b] by dividing the interval in n equal
+     *   parts and evaluating the function at the (n+1) different
+     *   elements. It is assumed that b is greater than a.
+     *   @param f The function to be evaluated.
+     *   @param n The number of points to be evaluated.
+     *   @param a The lowest x-value to be considered.
+     *   @param b The highest x-value to be considered.
+     *   @return An approximation of the minimal value of f in
+     *   the interval [a,b] (evaluated at a and b, and at the n-1
+     *   equidistant values in between).
+     */
+    public static double min(Function<Double,Double> f, int n,
+                             double a, double b) {
+        double x, y;
+        double min = f.apply(a);
+        double delta = (b - a)/n;
+        /* Loop invariant: min contains the minimum of all values of
+         * the function f(x) considered so far, i.e., the minimum of
+         * f(a), f(a + delta), f(a + 2 * delta), ..., f(a + i * delta).
+         * Consider for i = 0: f(a); for i = n: f(b).
+         */
+        for (int i = 0; i <= n ; i++){
+            x = a + delta * i;
+            y = f.apply(x);
+            if (y < min) {
+                min = y;
+            }
+        }
+        return min;
+    }
+
+    /**
      *   The method draws the x-axis if 0 is in the interval ]min,max[.
      *   It is assumed that the function is not constant.
      *   @param root The group to which the x-axis is to be added.
      */
     public static void drawXAxis(Group root){
-        /*if (min < 0 && 0 < max) {
+        /*if (min <= 0 && max >=0 && min != max) {
+            Line line = new Line(0, max * Y_SIZE/(max-min),
+                    X_SIZE, max * Y_SIZE/(max-min));
+            root.getChildren().add(line);
+        }*/
+        if (min < 0 && 0 < max) {
             Line line = new Line(0, (max-0) * Y_SIZE/(max-min),
                     X_SIZE, (max-0) * Y_SIZE/(max-min));
             line.setStrokeWidth(2);
             root.getChildren().add(line);
-        }*/
+        }
     }
     /**
      *   The method draws the y-axis if 0 is in the interval ]a, b[.
@@ -186,6 +288,8 @@ public class DisplayFunctionArea extends Application{
         a = left;
         b = right;
         n = numberOfValues;
+        min = min(f,n,a,b);
+        max = max(f,n,a,b);
         polyline = functionToPolyline(f, numberOfValues, left, right);
         polygon = functionToPolygon(f, numberOfValues, left, right);
         polygon.setFill(areaColour);
