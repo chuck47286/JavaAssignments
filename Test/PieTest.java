@@ -1,9 +1,6 @@
 import javafx.application.Application;
-import javafx.application.HostServices;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import javax.imageio.stream.ImageInputStream;
 
 import java.util.Arrays;
 
@@ -15,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 2019-11-29
  * @author YuCheng
  */
-class WaffleTest {
-    Waffle waffle;
+class PieTest {
+    Pie pie;
     @BeforeEach
     void setUp() {
         Expenditure[] expenditures = new Expenditure[]{
@@ -36,13 +33,11 @@ class WaffleTest {
         Arrays.sort(expenditures, (Expenditure exp1, Expenditure exp2) ->
                 exp2.getValue() - exp1.getValue());
         int maximum = 8;
-        waffle = new Waffle(expenditures,maximum);
+        pie = new Pie(expenditures,maximum);
 
     }
-
     @Test
     void start() {
-        Application.launch(waffle.getClass());
+        Application.launch(pie.getClass());
     }
-
 }

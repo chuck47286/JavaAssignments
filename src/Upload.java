@@ -26,8 +26,8 @@ public class Upload extends Application {
         Double[] arrowpoints = arrowGraph();
         arrow.getPoints().addAll(arrowpoints);
         root.getChildren().add(arrow);
-        arrow.setFill(Color.RED);
-        arrow.setStroke(Color.BLACK);
+//        arrow.setFill(Color.RED);
+//        arrow.setStroke(Color.BLACK);
 
         Polygon bowl = new Polygon();
         Double[] bowlpoints = bowlGraph();

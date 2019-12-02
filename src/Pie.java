@@ -26,7 +26,7 @@ public class Pie extends Application {
     /**
      * The distance between the text and the circle.
      */
-    private static final int DIS = 30;
+    private static final int DIS = 10;
     /**
      * The radious of the pie chart.
      */
@@ -65,8 +65,8 @@ public class Pie extends Application {
         Text[] texts = new Text[percentage.length];
         lines[0] = new Line(CEN_X, CEN_Y,CEN_X +RADIUS,CEN_Y);
         texts[0] = new Text(
-                CEN_X + 1.35 * RADIUS*Math.cos(percentage[0] / 2 * Math.PI / 180 ) ,
-                CEN_Y - 1.35 * RADIUS*Math.sin(percentage[0] / 2 * Math.PI / 180 ) ,
+                CEN_X + 1.25 * RADIUS*Math.cos(percentage[0] / 2 * Math.PI / 180 ) ,
+                CEN_Y - 1.25 * RADIUS*Math.sin(percentage[0] / 2 * Math.PI / 180 ) ,
                 String.format("%s", description[0])
         );
         for (int i = 1; i < percentage.length; i++) {
@@ -75,19 +75,36 @@ public class Pie extends Application {
                     CEN_Y - RADIUS*Math.sin(percentage[i - 1] * Math.PI / 180)
             );
             texts[i] = new Text(
-                    CEN_X + 1.35 * RADIUS*Math.cos(
+                    CEN_X + 1.25 * RADIUS*Math.cos(
                             (percentage[i - 1] + percentage[i]) / 2 * Math.PI / 180 ) ,
-                    CEN_Y - 1.35 * RADIUS*Math.sin(
+                    CEN_Y - 1.25 * RADIUS*Math.sin(
                             (percentage[i - 1] + percentage[i]) / 2 * Math.PI / 180 ) ,
                     String.format("%s", description[i])
             );
 
         }
-        texts[2].setX(CEN_X + 1.35 * RADIUS*Math.cos(
-                (percentage[2 - 1] + percentage[1]) / 2 * Math.PI / 180 ) - 6.8* DIS);
+//        texts[2].setX(CEN_X + 1.35 * RADIUS*Math.cos(
+//                (percentage[2 - 1] + percentage[1]) / 2 * Math.PI / 180 ) - 6.8* DIS);
         root.getChildren().addAll(lines);
+        // algorithm to adjust the positon of the text
+        for (int i = 0; i < texts.length; i++) {
+            adjustPosition(texts[i], i);
+        }
         root.getChildren().addAll(texts);
 
+    }
+
+    /**
+     * The method is to adjust the position of the text in case of no overlapping.
+     * @param text The position of the text is to adjust.
+     */
+    private void adjustPosition(Text text, int i) {
+        if (text.getX() >= CEN_X) return;
+
+        while (text.getX() + text.getLayoutBounds().getWidth() - CEN_X >
+                RADIUS*Math.cos((percentage[i - 1] + percentage[i]) / 2 * Math.PI / 180 )) {
+            text.setX(text.getX() - DIS);
+        }
     }
 
 
@@ -97,7 +114,7 @@ public class Pie extends Application {
      * @param maximum The maximum category in the table.
      * @return The arr which store the certain percentage of the expenditure.
      */
-    public static Double[] calPercentage(Expenditure[] expenditures, int maximum) {
+    private static Double[] calPercentage(Expenditure[] expenditures, int maximum) {
         percentage = new Double[maximum];
         int sum = 0;
         for (Expenditure e: expenditures) {
@@ -117,7 +134,7 @@ public class Pie extends Application {
      * @param maximum The maximum number of the group could be made according to the expenditure.
      * @return The String arr which store the all categories.
      */
-    public static String[] calDescription(Expenditure[] expenditures, int maximum) {
+    private static String[] calDescription(Expenditure[] expenditures, int maximum) {
         String[] description = new String[maximum];
         for (int i = 0; i < expenditures.length && i < maximum - 1; i++) {
             description[i] = expenditures[i].getDescription();
@@ -125,6 +142,35 @@ public class Pie extends Application {
         description[maximum - 1] = "Other";
         return description;
     }
+    /**
+     *  The method gives values to the static variables percentage, description by the
+     *  parameter of the method calPercentage and calDescription respectively.
+     *  @param expenditures The details of the expenditure.
+     *  @param maximum The maximum number of points on the polyline.
+     */
+    private static void pie(Expenditure[] expenditures, int maximum) {
+        percentage = calPercentage(expenditures, maximum);
+        description = calDescription(expenditures, maximum);
+    }
+
+    /**
+     * The default constructor
+     */
+    public Pie() {
+    }
+
+    /**
+     * The Parameterized constructors
+     * @param expenditures The details of the expenditure.
+     * @param maximum The maximum number of points on the polyline.
+     */
+    public Pie(Expenditure[] expenditures, int maximum) {
+//        this.expenditures = expenditures;
+//        this.maximum = maximum;
+        percentage = calPercentage(expenditures, maximum);
+        description = calDescription(expenditures, maximum);
+    }
+
 
     /**
      * The method is to start the AppFX.
@@ -148,8 +194,9 @@ public class Pie extends Application {
         Arrays.sort(expenditures, (Expenditure exp1, Expenditure exp2) ->
                 exp2.getValue() - exp1.getValue());
         int maximum = 8;
-        percentage = calPercentage(expenditures, maximum);
-        description = calDescription(expenditures, maximum);
+        pie(expenditures,maximum);
+//        percentage = calPercentage(expenditures, maximum);
+//        description = calDescription(expenditures, maximum);
         launch(args);
     }
 }
