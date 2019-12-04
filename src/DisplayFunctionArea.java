@@ -251,8 +251,8 @@ public class DisplayFunctionArea extends Application{
      */
     public static void drawYAxis(Group root){
         if (a < 0 && 0 < b) {
-            Line line = new Line((b-0) * X_SIZE/(b-a), 0,
-                    (b-0) * X_SIZE/(b-a), Y_SIZE);
+            Line line = new Line((-a-0) * X_SIZE/(b-a), 0,
+                    (-a-0) * X_SIZE/(b-a), Y_SIZE);
             line.setStrokeWidth(2);
             root.getChildren().add(line);
         }
