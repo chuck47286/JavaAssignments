@@ -93,6 +93,7 @@ public class Mini_interperter {
                 "E = 4";*/
 
         Mini_interperter mini_interperter = new Mini_interperter();
+
         int res = 0;
 //        try {
             res = mini_interperter.interpreter(input);
