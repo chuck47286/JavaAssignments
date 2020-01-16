@@ -3,28 +3,33 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.regex.Pattern;
 
-public class Mini_interperter {
+/**
+ * The class Mini_interperter is the simulation of how the ijvm works.
+ *
+ * @version 2019-12-05
+ * @author YuCheng
+ */
+class Mini_interperter {
+    /**
+     * The heapmeory is to store the value of variables.
+     */
     Map<String, Integer> heapmemory;
+    /**
+     * The pattern is to judge the instruction set is number or not.
+     */
     Pattern pattern;
 
+    /**
+     * The method is interpret the instruction of string to the result.
+     * @param input The Simulation of the bytecode.
+     * @return The result of the instruction set.
+     */
     private int interpreter(String input) {
         String[] instructions = input.split("\\n");
         heapmemory = new HashMap<>();
-//        pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+        pattern = Pattern.compile("^[-\\+]?[\\d]*$");
         int i = 0;
         for ( ; i < instructions.length; i++) {
-            // if it is the assignment operation, the jvm should calculate the result and
-            // store in the local variable table. otherwise, it is to return the variable or constant;
-            /*if (instructions[i].indexOf("=") != -1) {
-                cal(instructions[i].trim());
-            } else {
-                // constant if it is true. otherwise it is variable.
-                if (pattern.matcher(instructions[i].trim()).matches()) {
-                    return Integer.parseInt(instructions[i].trim());
-                } else {
-                    return heapmemory.getOrDefault(instructions[i].trim(), 0);
-                }
-            }*/
             try {
                 cal(instructions[i]);
             } catch (RuntimeException e) {
@@ -32,8 +37,13 @@ public class Mini_interperter {
             }
 
         }
-//        throw new RuntimeException();
-        return heapmemory.get(instructions[i].trim());
+        if (i < instructions.length) {
+            if (!pattern.matcher(instructions[i].trim()).matches())
+                return heapmemory.get(instructions[i].trim());
+            else return Integer.parseInt(instructions[i]);
+        }
+        else
+          throw new RuntimeException();
 
     }
 
@@ -91,16 +101,27 @@ public class Mini_interperter {
                 "B = A + 9\n" +
                 "C = A + B\n" +
                 "E = 4";*/
+        /*String input = "A = 2 + 1\n" +
+                "B = A + 9\n" +
+                "C = A + B\n" +
+                "B\n" +
+                "B = A + B\n" +
+                "B";*/
+        /*String input = "A = 2 + 1\n" +
+                "B = A + 9\n" +
+                "C = A + B\n" +
+                "20\n" +
+                "B = A + B\n" +
+                "B";*/
 
         Mini_interperter mini_interperter = new Mini_interperter();
-        int res = 0;
-//        try {
-            res = mini_interperter.interpreter(input);
+        try {
+            int res = mini_interperter.interpreter(input);
             System.out.println(res);
-//        } catch (Exception e) {
-//            System.out.println("There is warning in the runtime, " +
-//                    "and the ijvm could be out of memory if gc does not works well");
-//            e.printStackTrace();
-//        }
+        } catch (Exception e) {
+            /*System.out.println("There is no output in the runtime, " +
+                    "please check whether there is something wrong with return");
+            e.printStackTrace();*/
+        }
     }
 }
