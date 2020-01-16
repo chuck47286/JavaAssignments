@@ -27,10 +27,10 @@ public class Worksheet1Test {
     }
     @Test
     void fastPower() {
-        int m = 3;
+        int m = 2;
         int n = 4;
         int acres = worksheet1.fastPower(m, n);
-        int exres = 81;
+        int exres = 16;
         Assertions.assertEquals(exres, acres);
     }
     @Test

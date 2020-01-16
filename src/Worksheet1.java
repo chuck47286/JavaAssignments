@@ -1,5 +1,5 @@
 /**
- * @author YuCheng This class contains the solution for Worksheet1
+ * @author YuCheng This class contains the solution for Worksheet1.
  */
 
  public class Worksheet1 {
