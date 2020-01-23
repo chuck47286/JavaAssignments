@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/DataStructure.iml" filepath="$PROJECT_DIR$/DataStructure/DataStructure.iml" />
       <module fileurl="file://$PROJECT_DIR$/Ics_homework/Ics_homework.iml" filepath="$PROJECT_DIR$/Ics_homework/Ics_homework.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaAssignments.iml" filepath="$PROJECT_DIR$/JavaAssignments.iml" />
       <module fileurl="file://$PROJECT_DIR$/worksheet_02/worksheet_02.iml" filepath="$PROJECT_DIR$/worksheet_02/worksheet_02.iml" />
