@@ -220,40 +220,6 @@ public class Worksheet2Test {
         boolean exres = true;
         Assertions.assertEquals(acres, exres);
     }
-    // ---------------------------printDescending---------------------
-    @Test
-    void printDescending1() {
-        Integer[] arr = null;
-        Tree<Integer> t  = buildTree(arr, 0);
-        worksheet2.printDescending(t);
-        List<Integer> acres = new List();
-        Integer[] exarr = {};
-        List<Integer> exres = buildList(exarr);
-        Assertions.assertEquals(acres, exres);
-    }
-    @Test
-    void printDescending2() {
-//        Integer[] arr = {5, 6, 2};
-//        Integer[] arr = {5, 6, 6};
-        Integer[] arr = {5, 2, 6};
-        Tree<Integer> t  = buildTree(arr, 0);
-        worksheet2.printDescending(t);
-        Integer[] acarr = {6, 5, 2};
-        List<Integer> acres = buildList(acarr);
-        Integer[] exarr = {6, 5, 2};
-        List<Integer> exres = buildList(exarr);
-//        boolean exres = true;
-        Assertions.assertEquals(acres, exres);
-    }
-    @Test
-    void printDescending3() {
-        Integer[] arr = {5, 2, 6, 1, 4, null, 8, null, null, 3, null, null, null, 7, 9};
-        Tree<Integer> t  = buildTree(arr, 0);
-        boolean acres = worksheet2.isSearchTree(t);
-//        Integer[] exarr = {5, 1, 4};
-        boolean exres = true;
-        Assertions.assertEquals(acres, exres);
-    }
     // ---------------------------max---------------------
     @Test
     void max1() {
@@ -288,28 +254,172 @@ public class Worksheet2Test {
     void delete1() {
         Integer[] arr = null;
         Tree<Integer> t  = buildTree(arr, 0);
-        int acres = worksheet2.max(t);
-        int exres = 0;
+        Tree<Integer> acres = worksheet2.delete(t, 0);
+        Tree<Integer> exres = new Tree<>();
         Assertions.assertEquals(acres, exres);
     }
     @Test
     void delete2() {
-//        Integer[] arr = {5, 6, 2};
-//        Integer[] arr = {5, 6, 6};
         Integer[] arr = {5, 2, 6};
         Tree<Integer> t  = buildTree(arr, 0);
-        int acres = worksheet2.max(t);
-        int exres = 6;
-//        boolean exres = true;
+        Tree<Integer> acres = worksheet2.delete(t, 5);
+        Integer[] exarr = {2, null, 6};
+        Tree<Integer> exres = buildTree(exarr, 0);
         Assertions.assertEquals(acres, exres);
     }
     @Test
     void delete3() {
         Integer[] arr = {5, 2, 6, 1, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+//        Integer[] arr = {5, 2, 6, 0, 4, null, 8, null, 1, 3, null, null, null, 7, 9};
         Tree<Integer> t  = buildTree(arr, 0);
-        int acres = worksheet2.max(t);
-//        Integer[] exarr = {5, 1, 4};
-        int exres = 9;
+        Tree<Integer> acres = worksheet2.delete(t, 2);
+        Integer[] exarr = {5, 1, 6, null, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+//        Integer[] exarr = {5, 1, 6, 0, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(acres, exres);
+    }
+    // ---------------------------delete---------------------
+    @Test
+    void isHeightBalanced1() {
+        Integer[] arr = null;
+        Tree<Integer> t  = buildTree(arr, 0);
+        boolean acres = worksheet2.isHeightBalanced(t);
+        boolean exres = true;
+        Assertions.assertEquals(acres, exres);
+    }
+    @Test
+    void isHeightBalanced2() {
+        Integer[] arr = {5, 2, 6, 1};
+        Tree<Integer> t  = buildTree(arr, 0);
+        boolean acres = worksheet2.isHeightBalanced(t);
+//        Integer[] exarr = {2, null, 6};
+        boolean exres = true;
+        Assertions.assertEquals(acres, exres);
+    }
+    @Test
+    void isHeightBalanced3() {
+//        Integer[] arr = {5, 2, 6, 1, 4, null, 8, null, null, 3};
+        Integer[] arr = {5, 2, 6, 1, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+        Tree<Integer> t  = buildTree(arr, 0);
+        boolean acres = worksheet2.isHeightBalanced(t);
+//        Integer[] exarr = {5, 1, 6, null, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+//        Integer[] exarr = {5, 1, 6, 0, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+//        Tree<Integer> exres = buildTree(exarr, 0);
+        boolean exres = false;
+        Assertions.assertEquals(acres, exres);
+    }
+    // ---------------------------insertHB & deleteHB---------------------
+    @Test
+    void insertHB1() {
+        Integer[] arr = null;
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.insertHB(t, 1);
+        Tree<Integer> exres = new Tree(1);
+        Assertions.assertEquals(acres, exres);
+    }
+    @Test
+    void insertHB2() {
+        Integer[] arr = {3,2};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.insertHB(t, 1);
+//        System.out.println(worksheet2.isHeightBalanced(acres));
+        Integer[] exarr = {2,1,3};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(exres, acres);
+    }
+    @Test
+    void insertHB3() {
+        Integer[] arr = {1,null,2};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.insertHB(t, 3);
+//        System.out.println(worksheet2.isHeightBalanced(acres));
+        Integer[] exarr = {2, 1, 3};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(exres, acres);
+    }
+    @Test
+    void insertHB4() {
+//        Integer[] arr = {5, 2, 6, 1, 4, null, 8, null, null, 3};
+        Integer[] arr = {4, 2};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.insertHB(t, 3);
+//        Integer[] exarr = {5, 1, 6, null, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+        Integer[] exarr = {3, 2, 4};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(acres, exres);
+    }
+    @Test
+    void insertHB5() {
+//        Integer[] arr = {5, 2, 6, 1, 4, null, 8, null, null, 3};
+        Integer[] arr = {4, null, 6};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.insertHB(t, 5);
+//        Integer[] exarr = {5, 1, 6, null, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+        Integer[] exarr = {5, 4, 6};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(acres, exres);
+    }
+    @Test
+    void deleteHB1() {
+        Integer[] arr = null;
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.deleteHB(t, 1);
+        Tree<Integer> exres = new Tree();
+        Assertions.assertEquals(acres, exres);
+    }
+    @Test
+    void deleteHB2() {
+        Integer[] arr = {3, 2, 4, 1};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.deleteHB(t, 4);
+//        System.out.println(worksheet2.isHeightBalanced(acres));
+        Integer[] exarr = {2,1,3};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(exres, acres);
+    }
+    @Test
+    void deleteHB3() {
+        Integer[] arr = {3, 2, 4, null, null, null, 5};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.deleteHB(t, 2);
+//        System.out.println(worksheet2.isHeightBalanced(acres));
+        Integer[] exarr = {4, 3, 5};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(exres, acres);
+    }
+    @Test
+    void deleteHB4() {
+        Integer[] arr = {3, 1, 4, null, 2};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.deleteHB(t, 4);
+        Integer[] exarr = {2, 1, 3};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(acres, exres);
+    }
+    @Test
+    void deleteHB5() {
+//        Integer[] arr = {5, 2, 6, 1, 4, null, 8, null, null, 3};
+        Integer[] arr = {3, 1, 5, null, null, 4};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.deleteHB(t, 1);
+//        Integer[] exarr = {5, 1, 6, null, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+        Integer[] exarr = {4, 3, 5};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(acres, exres);
+    }
+
+    /**
+     * delete the node which does not exist in the tree.
+     */
+    @Test
+    void deleteHB6() {
+//        Integer[] arr = {5, 2, 6, 1, 4, null, 8, null, null, 3};
+        Integer[] arr = {3, 1, 5, null, null, 4};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.deleteHB(t, 7);
+//        Integer[] exarr = {5, 1, 6, null, 4, null, 8, null, null, 3, null, null, null, 7, 9};
+        Integer[] exarr = {3, 1, 5, null, null, 4};
+        Tree<Integer> exres = buildTree(exarr, 0);
         Assertions.assertEquals(acres, exres);
     }
 
