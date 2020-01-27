@@ -126,6 +126,7 @@ public class Worksheet2 implements Worksheet2Interface {
 	// Exercise 8
 
 	static Tree<Integer> delete(Tree<Integer> a, int x) {
+
 		return new Tree<Integer>();
 	}
 
