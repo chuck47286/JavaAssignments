@@ -9,6 +9,11 @@ public class Worksheet2 implements Worksheet2Interface {
 
 	// Exercise 1
 
+	/**
+	 *
+	 * @param t Given a tree of integers a.
+	 * @return a new tree containing all the elements of a with their sign negated.
+	 */
 	static Tree<Integer> negateAll(Tree<Integer> t) {
 		if (t.isEmpty()) {
 			return new Tree<>();
@@ -26,6 +31,11 @@ public class Worksheet2 implements Worksheet2Interface {
 
 	// Exercise 2
 
+	/**
+	 *
+	 * @param a Given a tree of integers a.
+	 * @return a boolean value indicating whether all the values in its nods are even.
+	 */
 	static boolean allEven(Tree<Integer> a) {
 		if (a.isEmpty()) {
 			return true;
@@ -43,6 +53,13 @@ public class Worksheet2 implements Worksheet2Interface {
 	}
 
 	// Exercise 3
+
+	/**
+	 *
+	 * @param a Given a tree of integers a.
+	 * @param x The target value of the certain node is x.
+	 * @return the depth of the given node value or -1 if it is not found.
+	 */
 	static int depth(Tree<Integer> a, int x) {
 		try {
 			return find(a, x, 0);
@@ -50,17 +67,32 @@ public class Worksheet2 implements Worksheet2Interface {
 			return -1;
 		}
 	}
+
+	/**
+	 *
+	 * @param a Given a tree of integers a.
+	 * @param x The target value of the certain node is x.
+	 * @param dep The current of the depth of the recursion.
+	 * @return the depth of the given node value,or -1 if is not found.
+	 */
 	static int find(Tree<Integer> a, int x, int dep) {
 		if (a.isEmpty()) return -1;
 		if (a.value == x) {
 			return dep;
 		}
 		return Math.max(find(a.left, x, dep + 1),
-		find(a.right, x, dep + 1));
+							find(a.right, x, dep + 1));
 
 
 	}
 	// Exercise 4
+
+	/**
+	 *
+	 * @param a Given a tree a.
+	 * @param <E> The generic type of the tree.
+	 * @return a list containing the values in a  by traversing the nodes in preorder.
+	 */
 	static <E> List<E> preorder(Tree<E> a) {
 		if (a.isEmpty()) {
 			return new List<>();
@@ -93,6 +125,11 @@ public class Worksheet2 implements Worksheet2Interface {
 
 	// Exercise 5
 
+	/**
+	 *
+	 * @param a The binary search tree of integers a.
+	 * @return a boolean value indicating whether a is a binary tree.
+	 */
 	static boolean isSearchTree(Tree<Integer> a) {
 		if (a.isEmpty() || a.left.isEmpty() && a.right.isEmpty()) return true;
 		if (!a.left.isEmpty() && a.value <= a.left.value) return false;
@@ -101,7 +138,11 @@ public class Worksheet2 implements Worksheet2Interface {
 	}
 
 	// Exercise 6
-
+	/**
+	 *
+	 * @param a The binary search tree of integers a.
+	 * @return print the values stored in it in descending order.
+	 */
 	static void printDescending(Tree<Integer> a) {
 		if (a.isEmpty() ) {
 			return;
@@ -112,7 +153,11 @@ public class Worksheet2 implements Worksheet2Interface {
 	}
 
 	// Exercise 7
-
+	/**
+	 *
+	 * @param a The binary search tree of integers a.
+	 * @return The maximum value stored in the tree.
+	 */
 	static int max(Tree<Integer> a) {
 		if (a == null || a.isEmpty()) return 0;
 		if (a.right.isEmpty()) {
@@ -125,6 +170,12 @@ public class Worksheet2 implements Worksheet2Interface {
 
 	// Exercise 8
 
+	/**
+	 *
+	 * @param a The binary search tree a.
+	 * @param x The target value which is expected to be deleted.
+	 * @return The resulting tree which the target value x from a.
+	 */
 	static Tree<Integer> delete(Tree<Integer> a, int x) {
 		if (a.isEmpty()) {
 			return new Tree<>();
@@ -155,6 +206,13 @@ public class Worksheet2 implements Worksheet2Interface {
 	}
 
 	// Exercise 9
+
+	/**
+	 *
+	 * @param a The tree a.
+	 * @param <E> The arbitrary element type E.
+	 * @return a boolean value indicating whether a is the height-balanced tree.
+	 */
 	static <E> boolean isHeightBalanced(Tree<E> a) {
 		if (a == null || a.isEmpty() || a.left.isEmpty() && a.right.isEmpty()) {
 			return true;
@@ -167,6 +225,12 @@ public class Worksheet2 implements Worksheet2Interface {
 
 	// Exercise 10
 
+	/**
+	 *
+	 * @param a The height-balanced tree a.
+	 * @param x The value x of the node are expected to inserted into the tree a.
+	 * @return The height-balanced property of tree should be maintained after insert operation.
+	 */
 	static Tree<Integer> insertHB(Tree<Integer> a, int x) {
 		if (a == null || a.isEmpty()) {
 			return new Tree<>(x, new Tree<>(), new Tree<>());
@@ -246,7 +310,12 @@ public class Worksheet2 implements Worksheet2Interface {
 				t.left.left,
 				new Tree<>(t.getValue(), t.left.right, t.right));
 	}
-
+	/**
+	 *
+	 * @param a The height-balanced tree a.
+	 * @param x The value x of the node are expected to deleted from the tree a.
+	 * @return The height-balanced property of tree should be maintained after delete operation.
+	 */
 	static Tree<Integer> deleteHB(Tree<Integer> a, int x) {
 		if (a == null || a.isEmpty()) {
 			return a;
