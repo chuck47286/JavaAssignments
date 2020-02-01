@@ -360,6 +360,15 @@ public class Worksheet2Test {
         Assertions.assertEquals(acres, exres);
     }
     @Test
+    void insertHB6() {
+        Integer[] arr = {40, 30, 70, null, null, 60, 80};
+        Tree<Integer> t  = buildTree(arr, 0);
+        Tree<Integer> acres = worksheet2.insertHB(t, 65);
+        Integer[] exarr = {60, 40, 70, 30, null, 65, 80};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(acres, exres);
+    }
+    @Test
     void deleteHB1() {
         Integer[] arr = null;
         Tree<Integer> t  = buildTree(arr, 0);
