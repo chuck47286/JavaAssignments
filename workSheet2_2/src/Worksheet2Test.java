@@ -431,6 +431,17 @@ public class Worksheet2Test {
         Tree<Integer> exres = buildTree(exarr, 0);
         Assertions.assertEquals(acres, exres);
     }
+    @Test
+    void deleteHB7() {
+        Integer[] arr = {14, 7, 17, 4, 11, null, 53, null, null, null, 13};
+        Tree<Integer> t  = buildTree(arr, 0);
+        System.out.println(t.toString());
+        Tree<Integer> acres = worksheet2.deleteHB(t, 7);
+        System.out.println(acres.toString());
+        Integer[] exarr = {14, 11, 17, 4, 13, null, 53};
+        Tree<Integer> exres = buildTree(exarr, 0);
+        Assertions.assertEquals(acres, exres);
+    }
 
 
 

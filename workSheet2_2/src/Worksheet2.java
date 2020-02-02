@@ -331,7 +331,7 @@ public class Worksheet2 implements Worksheet2Interface {
 		// x is equal to the value of the current node
 		else {
 			// a is the leaf node
-			if (!a.left.isEmpty() && !a.right.isEmpty()) {
+			if (a.left.isEmpty() && a.right.isEmpty()) {
 				return new Tree<>();
 			}
 			// a has the right node only
@@ -340,9 +340,10 @@ public class Worksheet2 implements Worksheet2Interface {
 			}
 			// a has the two subtree or left tree, then find the maximum node in the left tree
 			else {
-				return new Tree<>(max(a.left), deleteHB(a.left, max(a.left)), a.right);
+				return balance(new Tree<>(max(a.left), deleteHB(a.left, max(a.left)), a.right)) ;
 			}
 		}
+		/*return balance(delete(a, x));*/
 	}
 
 }
