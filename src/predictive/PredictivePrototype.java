@@ -7,7 +7,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * The class is to
+ * The class has two methods to implement how the program to use the digits 1-9 to
+ * simulate the dialing phone numbers.
  *
  * @author YuCheng
  * @version 2020/2/8 9:36
@@ -79,6 +80,6 @@ public class PredictivePrototype {
      * @return judge whether it is word.
      */
     private static boolean isValidWord(String line) {
-        return false;
+        return line != null && line.length() != 0;
     }
 }
