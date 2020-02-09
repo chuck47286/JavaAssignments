@@ -58,15 +58,17 @@ public class PredictivePrototype {
      * @return The set of possible matching words from the dictionary.
      */
     public static Set<String> signatureToWords(String signature) {
-        Set<String> res = new HashSet();
+        Set<String> res = new HashSet<String>();
         try {
-            Scanner sc = new Scanner(new File("./words"));
+            Scanner sc = new Scanner(new File("/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"));
             while (sc.hasNext()) {
-                String line = sc.nextLine();
-                if (line.length() != signature.length() && !isValidWord(line)) {
-                    continue;
+                String line = sc.nextLine().toLowerCase();
+
+                if (line.length() == signature.length()
+                        && isValidWord(line)
+                        && signature.equals(wordToSignature(line))) {
+                    res.add(line);
                 }
-                res.add(line.toLowerCase());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -80,6 +82,16 @@ public class PredictivePrototype {
      * @return judge whether it is word.
      */
     private static boolean isValidWord(String line) {
-        return line != null && line.length() != 0;
+        if (line == null || line.length() == 0) {
+            return false;
+        }
+        return true;
+
     }
+
+    /*public static void main(String[] args) {
+        String input = "4663";
+        Set<String> strings = signatureToWords(input);
+        System.out.println(strings);
+    }*/
 }
