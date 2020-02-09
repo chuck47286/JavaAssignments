@@ -31,6 +31,8 @@ public class StudentTest {
         list.add(stu2);
         list.add(stu3);
         Collections.sort(list);
-        System.out.println(list);
+        for (Student s: list) {
+            System.out.println(s);
+        }
     }
 }

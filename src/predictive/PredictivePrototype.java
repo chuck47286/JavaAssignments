@@ -70,7 +70,9 @@ public class PredictivePrototype {
                     res.add(line);
                 }
             }
+            sc.close();
         } catch (FileNotFoundException e) {
+
             e.printStackTrace();
         }
         return res;
