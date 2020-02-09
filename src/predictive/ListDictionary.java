@@ -1,8 +1,7 @@
 package predictive;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 /**
  * The class is to implement the Interface Dictionary in order to search the word by the
@@ -13,8 +12,58 @@ import java.util.Set;
  */
 public class ListDictionary implements Dictionary{
     private List<WordSig> listdic;
+    /**
+     * This constructs a new ListDictionary Object. It sets dict to a new
+     * ArrayList for the words and signatures to be stored as pairs in a WordSig
+     * object. This words are read from the dictionary file 'words' found in
+     * C:\Users\Administrator.PC-20190121EABW\IdeaProjects\JavaAssignments\src\predictive\words.
+     * (This is in the window OS, it is little different in format from linux)
+     * If the word is invalid, it will not add to list. The
+     * list is then sorted by signature in a natural order using the Collections
+     * sort method. Warning: Duplicates exist in dictionary.
+     *
+     */
     public ListDictionary() {
         listdic = new ArrayList<>();
+        File file =
+                new File("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                line = line.toLowerCase();
+                if (isValidWord(line)) {
+                    String linesignature = wordToSignature(line);
+                    listdic.add(new WordSig(line, linesignature));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        Collections.sort(listdic);
+    }
+    /**
+     *
+     * @param line The input of the String word.
+     * @return judge whether it is word.
+     */
+    private static boolean isValidWord(String line) {
+        if (line == null || line.length() == 0) {
+            return false;
+        }
+        for (char c : line.toCharArray()) {
+            if (c < 97 || c > 122) {
+                return false;
+            }
+        }
+        return true;
 
     }
 
@@ -64,7 +113,30 @@ public class ListDictionary implements Dictionary{
      */
     @Override
     public Set<String> signatureToWords(String signature) {
-
-        return null;
+        Set<String> res = new HashSet<>();
+        WordSig ws = new WordSig("", signature);
+        int index = Collections.binarySearch(listdic, ws);
+        int max = listdic.size();
+        if (index >= 0) {
+            int tempindex = index;
+            // go down search
+            while (tempindex >= 0 && listdic.get(tempindex).getSignature().equals(signature)) {
+                res.add(listdic.get(tempindex).getWords());
+                tempindex--;
+            }
+            tempindex = index;
+            // go up search
+            while (tempindex < max && listdic.get(tempindex).getSignature().equals(signature)) {
+                res.add(listdic.get(tempindex).getWords());
+                tempindex++;
+            }
+        }
+        return res;
+    }
+    public static void main(String[] args) {
+        String input = "4663";
+        ListDictionary ld = new ListDictionary();
+        Set<String> strings = ld.signatureToWords(input);
+        System.out.println(strings);
     }
 }

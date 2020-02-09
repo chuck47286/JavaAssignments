@@ -23,12 +23,36 @@ public class WordSig implements Comparable<WordSig>{
 
     /**
      *
+     * @return The value of words in the instance.
+     */
+    public String getWords() {
+        return words;
+    }
+
+    /**
+     *
+     * @return The value of signature in the instance.
+     */
+    public String getSignature() {
+        return signature;
+    }
+
+    /**
+     *
      * @param ws The input of WordSig is the potential comparable object.
      * @return The 1 , -1 or 0. The meaning of this method is to sort the
-     * WordSig by the signature in ascending order.
+     * WordSig by the signature length and alphabetical writing in ascending order.
      */
     @Override
     public int compareTo(WordSig ws) {
+//
+//        if(this.signature.length()<ws.signature.length()){
+//            return -1;
+//        }else if(this.signature.length()>ws.signature.length()){
+//            return 1;
+//        }else{
+//            return this.signature.compareTo(ws.signature);
+//        }
         return this.signature.compareTo(ws.signature);
     }
 }
