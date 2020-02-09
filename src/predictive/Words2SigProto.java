@@ -12,20 +12,7 @@ import java.util.Scanner;
  */
 public class Words2SigProto {
     public static void main(String[] args) {
-         for (String s: args) {
-             System.out.println(s);
-         }
-        /*try {
-            Scanner sc = new Scanner(new File("./words"));
-            while (sc.hasNext()) {
-                String line = sc.next();
-
-                String wordToSignature = PredictivePrototype.wordToSignature(line);
-
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
-
+        for (String s: args)
+            System.out.println(PredictivePrototype.wordToSignature(s));
     }
 }
