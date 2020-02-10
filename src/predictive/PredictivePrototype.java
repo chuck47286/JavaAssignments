@@ -60,7 +60,12 @@ public class PredictivePrototype {
     public static Set<String> signatureToWords(String signature) {
         Set<String> res = new HashSet<String>();
         try {
-            Scanner sc = new Scanner(new File("/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"));
+            Scanner sc =
+                    new Scanner(
+                            new File(
+//                                    "/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"
+                                    "/usr/share/dict/words"
+                            ));
             while (sc.hasNext()) {
                 String line = sc.nextLine().toLowerCase();
 

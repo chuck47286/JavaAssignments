@@ -26,7 +26,14 @@ public class ListDictionary implements Dictionary{
     public ListDictionary() {
         listdic = new ArrayList<>();
         File file =
-                new File("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
+//                new File("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
+//                new File(ListDictionary.class.getResource("/predictive/words").getFile());
+            new File(
+//                    "/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"
+                    "/usr/share/dict/words"
+            );
+
+
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -49,6 +56,7 @@ public class ListDictionary implements Dictionary{
         }
         Collections.sort(listdic);
     }
+
     /**
      *
      * @param line The input of the String word.
@@ -133,10 +141,10 @@ public class ListDictionary implements Dictionary{
         }
         return res;
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         String input = "4663";
         ListDictionary ld = new ListDictionary();
         Set<String> strings = ld.signatureToWords(input);
         System.out.println(strings);
-    }
+    }*/
 }
