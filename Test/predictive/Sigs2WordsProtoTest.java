@@ -14,24 +14,18 @@ import static org.junit.Assert.*;
  * @author YuCheng
  * @version 2020-2-10
  */
-public class ListDictionaryTest {
-    ListDictionary ld;
+public class Sigs2WordsProtoTest {
+    PredictivePrototype pp;
     @Before
     public void setUp() throws Exception {
-        ld = new ListDictionary();
+        pp = new PredictivePrototype();
     }
 
     @Test
-    public void wordToSignature() {
-        String actual = ld.wordToSignature("home");
-        String exp = "4663";
-        assertEquals(actual, exp);
-    }
-
-    @Test
-    public void signatureToWords() {
-        Set<String> actual = ld.signatureToWords("329");
+    public void main() {
+        Set<String> actual = PredictivePrototype.signatureToWords("329");
         Set<String> exp = new HashSet<>();
+//        [dbw, dax, daw, fax, day, fcy, fay]
         exp.add("dbw");
         exp.add("dax");
         exp.add("daw");
@@ -41,6 +35,4 @@ public class ListDictionaryTest {
         exp.add("fay");
         assertEquals(exp, actual);
     }
-
-
 }

@@ -9,7 +9,7 @@ import java.util.Set;
 import static org.junit.Assert.*;
 
 /**
- * The class
+ * The class is to test class PredictivePrototype.
  *
  * @author YuCheng
  * @version 2020-2-10

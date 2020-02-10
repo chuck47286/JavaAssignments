@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  * @author YuCheng
  * @version 2020-2-10
  */
-public class ListDictionaryTest {
+public class Sigs2WordsListTest {
     ListDictionary ld;
     @Before
     public void setUp() throws Exception {
@@ -22,14 +22,7 @@ public class ListDictionaryTest {
     }
 
     @Test
-    public void wordToSignature() {
-        String actual = ld.wordToSignature("home");
-        String exp = "4663";
-        assertEquals(actual, exp);
-    }
-
-    @Test
-    public void signatureToWords() {
+    public void main() {
         Set<String> actual = ld.signatureToWords("329");
         Set<String> exp = new HashSet<>();
         exp.add("dbw");
@@ -41,6 +34,4 @@ public class ListDictionaryTest {
         exp.add("fay");
         assertEquals(exp, actual);
     }
-
-
 }
