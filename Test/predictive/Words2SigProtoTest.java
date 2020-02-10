@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * The class to test the class Words2SigProtoTest.
+ * The class to test the class Words2SigProto.
  *
  * @author YuCheng
  * @version 2020-2-10

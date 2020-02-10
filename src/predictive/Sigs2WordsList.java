@@ -10,13 +10,7 @@ package predictive;
  * real    0m0.353s
  * user    0m0.725s
  * sys     0m0.063s
- * chuck@chuck-ThinkPad-X280:~/IdeaProjects/JavaAssignments/src/predictive$ time java -cp . predictive.Sigs2WordsProto 4663 329
- * [hood, ione, ioof, good, hond, inne, gond, hone, hoof, gone, goof, home, gome]
- * [dbw, dax, daw, fax, day, fcy, fay]
  *
- * real    0m0.938s
- * user    0m1.691s
- * sys     0m0.192s
  *
  * @author YuCheng
  * @version 2020/2/9 23:31

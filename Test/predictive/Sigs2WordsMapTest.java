@@ -9,21 +9,22 @@ import java.util.Set;
 import static org.junit.Assert.*;
 
 /**
- * The class is to test the class Sigs2WordsList.
+ * The class is to test the class Sigs2WordsMap.
  *
  * @author YuCheng
  * @version 2020-2-10
  */
-public class Sigs2WordsListTest {
-    ListDictionary ld;
+public class Sigs2WordsMapTest {
+    MapDictionary md;
     @Before
     public void setUp() throws Exception {
-        ld = new ListDictionary();
+        md = new MapDictionary();
     }
+
 
     @Test
     public void main() {
-        Set<String> actual = ld.signatureToWords("329");
+        Set<String> actual = md.signatureToWords("329");
         Set<String> exp = new HashSet<>();
         exp.add("dbw");
         exp.add("dax");

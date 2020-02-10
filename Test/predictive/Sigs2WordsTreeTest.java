@@ -9,21 +9,21 @@ import java.util.Set;
 import static org.junit.Assert.*;
 
 /**
- * The class is to test the class Sigs2WordsList.
+ * The class Sigs2WordsTreeTest is to test the class Sigs2WordsTree.
  *
  * @author YuCheng
  * @version 2020-2-10
  */
-public class Sigs2WordsListTest {
-    ListDictionary ld;
+public class Sigs2WordsTreeTest {
+    TreeDictionary td;
     @Before
     public void setUp() throws Exception {
-        ld = new ListDictionary();
+        td = new TreeDictionary();
     }
 
     @Test
     public void main() {
-        Set<String> actual = ld.signatureToWords("329");
+        Set<String> actual = td.signatureToWords("329");
         Set<String> exp = new HashSet<>();
         exp.add("dbw");
         exp.add("dax");
