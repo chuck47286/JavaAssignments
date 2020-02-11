@@ -40,9 +40,8 @@ public class MapDictionary implements Dictionary{
                     /**
                      * The hashmap would store the signature of the word as the
                      * key, and the word of the same signature as the value.
-                     * So, the map would search the signature by the hash method
+                     * So, the map would get or put the signature by the hash method
                      * that is O(1) time complexity if the entry is not too much.
-                     * It is faster than binary search O(log n).
                      */
                     String sig = wordToSignature(line);
                     if (!map.containsKey(sig)) {
