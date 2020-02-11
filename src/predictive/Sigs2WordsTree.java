@@ -16,7 +16,7 @@ package predictive;
  */
 public class Sigs2WordsTree {
     public static void main(String[] args) {
-        TreeDictionary td = new TreeDictionary();
+        TreeDictionary td = new TreeDictionary("/usr/share/dict/words");
         for (String s: args) {
             System.out.println(td.signatureToWords(s));
         }

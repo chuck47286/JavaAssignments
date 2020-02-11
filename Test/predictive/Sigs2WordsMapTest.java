@@ -18,7 +18,7 @@ public class Sigs2WordsMapTest {
     MapDictionary md;
     @Before
     public void setUp() throws Exception {
-        md = new MapDictionary();
+        md = new MapDictionary("/usr/share/dict/words");
     }
 
 

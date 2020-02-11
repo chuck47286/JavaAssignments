@@ -17,7 +17,7 @@ package predictive;
  */
 public class Sigs2WordsList {
     public static void main(String[] args) {
-        ListDictionary ld = new ListDictionary();
+        ListDictionary ld = new ListDictionary("/usr/share/dict/words");
         for (String s: args)
             System.out.println(ld.signatureToWords(s));
     }

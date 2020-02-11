@@ -18,7 +18,7 @@ public class MapDictionaryTest {
     MapDictionary md;
     @Before
     public void setUp() throws Exception {
-        md = new MapDictionary();
+        md = new MapDictionary("/usr/share/dict/words");
     }
 
     @Test

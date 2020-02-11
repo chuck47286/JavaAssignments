@@ -30,7 +30,7 @@ public class PredictivePrototype {
          * generating new objects.
          */
         StringBuffer sb = new StringBuffer();
-        for (char c: word.toCharArray()) {
+        for (char c: word.toLowerCase().toCharArray()) {
             if (c == 'a' || c == 'b' || c == 'c') {
                 sb.append(2);
             } else if (c == 'd' || c == 'e' || c == 'f') {

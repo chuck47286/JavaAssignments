@@ -18,7 +18,7 @@ public class ListDictionaryTest {
     ListDictionary ld;
     @Before
     public void setUp() throws Exception {
-        ld = new ListDictionary();
+        ld = new ListDictionary("/usr/share/dict/words");
     }
 
     @Test

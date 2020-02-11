@@ -23,14 +23,15 @@ public class TreeDictionary implements  Dictionary{
         }
     }
     TrieNode root;
-    public TreeDictionary() {
+    public TreeDictionary(String path) {
         root = new TrieNode();
         File file =
 //                new File("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
 //                new File(ListDictionary.class.getResource("/predictive/words").getFile());
                 new File(
-                        "/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"
+//                        "/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"
 //                        "/usr/share/dict/words"
+                        path
                 );
 
 

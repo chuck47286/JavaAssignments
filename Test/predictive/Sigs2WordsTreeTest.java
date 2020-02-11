@@ -18,7 +18,7 @@ public class Sigs2WordsTreeTest {
     TreeDictionary td;
     @Before
     public void setUp() throws Exception {
-        td = new TreeDictionary();
+        td = new TreeDictionary("/usr/share/dict/words");
     }
 
     @Test

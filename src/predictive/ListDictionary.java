@@ -23,15 +23,17 @@ public class ListDictionary implements Dictionary{
      * sort method. Warning: Duplicates exist in dictionary.
      *
      */
-    public ListDictionary() {
+    public ListDictionary(String path) {
         listdic = new ArrayList<>();
         File file =
 //                new File("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
 //                new File(ListDictionary.class.getResource("/predictive/words").getFile());
             new File(
 //                    "/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"
-                    "/usr/share/dict/words"
+//                    "/usr/share/dict/words"
+                    path
             );
+
 
 
         BufferedReader reader = null;

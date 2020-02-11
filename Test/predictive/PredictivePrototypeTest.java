@@ -24,6 +24,8 @@ public class PredictivePrototypeTest {
     @Test
     public void wordToSignature() {
         String actual = PredictivePrototype.wordToSignature("home");
+//        String actual = PredictivePrototype.wordToSignature("HOME");
+
         String exp = "4663";
         assertEquals(exp, actual);
     }
