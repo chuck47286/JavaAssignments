@@ -1,10 +1,15 @@
 package predictive;
 
+import javafx.scene.layout.Priority;
+import jdk.nashorn.internal.objects.annotations.Function;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.PriorityQueue;
 import java.util.Set;
 
 /**
@@ -15,11 +20,18 @@ import java.util.Set;
  */
 public class TreeDictionary implements  Dictionary{
     class TrieNode {
-        Set<String> word;
+//        Set<String> word;
+        PriorityQueue<String> word;
         TrieNode[] children;
+//        boolean hasword;
         public TrieNode() {
             children = new TrieNode[8];
-            word = new HashSet<>();
+            word = new PriorityQueue<String>(new Comparator<String>(){
+                @Override
+                public int compare(String a, String b) {
+                    return a.length() - b.length();
+                }
+            });
         }
     }
     TrieNode root;
@@ -54,8 +66,10 @@ public class TreeDictionary implements  Dictionary{
                             cur.children[c - '2'] = new TrieNode();
                         }
                         cur = cur.children[c - '2'];
+                        cur.word.add(line);
                     }
-                    cur.word.add(line);
+//                    cur.word.add(line);
+//                    cur.hasword = true;
                 }
             }
         } catch (IOException e) {
@@ -138,6 +152,14 @@ public class TreeDictionary implements  Dictionary{
                 return new HashSet<String>();
             }
         }
-        return cur.word;
+        Set<String> res = new HashSet<>();
+        while (!cur.word.isEmpty()) {
+            String str = cur.word.poll();
+            if (str.length() > signature.length()) {
+                break;
+            }
+            res.add(str);
+        }
+        return res;
     }
 }
