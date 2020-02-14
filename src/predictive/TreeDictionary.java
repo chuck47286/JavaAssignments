@@ -20,18 +20,19 @@ import java.util.Set;
  */
 public class TreeDictionary implements  Dictionary{
     class TrieNode {
-//        Set<String> word;
-        PriorityQueue<String> word;
+        Set<String> word;
+//        PriorityQueue<String> word;
         TrieNode[] children;
 //        boolean hasword;
         public TrieNode() {
             children = new TrieNode[8];
-            word = new PriorityQueue<String>(new Comparator<String>(){
+            word = new HashSet<>();
+           /* word = new PriorityQueue<String>(new Comparator<String>(){
                 @Override
                 public int compare(String a, String b) {
                     return a.length() - b.length();
                 }
-            });
+            });*/
         }
     }
     TrieNode root;
@@ -66,9 +67,8 @@ public class TreeDictionary implements  Dictionary{
                             cur.children[c - '2'] = new TrieNode();
                         }
                         cur = cur.children[c - '2'];
-                        cur.word.add(line);
                     }
-//                    cur.word.add(line);
+                    cur.word.add(line);
 //                    cur.hasword = true;
                 }
             }
@@ -152,14 +152,14 @@ public class TreeDictionary implements  Dictionary{
                 return new HashSet<String>();
             }
         }
-        Set<String> res = new HashSet<>();
+        /*Set<String> res = new HashSet<>();
         while (!cur.word.isEmpty()) {
             String str = cur.word.poll();
             if (str.length() > signature.length()) {
                 break;
             }
             res.add(str);
-        }
-        return res;
+        }*/
+        return cur.word;
     }
 }
