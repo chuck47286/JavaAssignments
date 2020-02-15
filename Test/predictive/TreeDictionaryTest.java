@@ -35,11 +35,16 @@ public class TreeDictionaryTest {
         Set<String> exp = new HashSet<>();
         exp.add("dbw");
         exp.add("dax");
+        exp.add("ecy");
         exp.add("daw");
+        exp.add("daz");
         exp.add("fax");
+        exp.add("faw");
         exp.add("day");
+        exp.add("ecz");
         exp.add("fcy");
         exp.add("fay");
+        exp.add("faz");
         assertEquals(exp, actual);
     }
 }

@@ -67,8 +67,8 @@ public class TreeDictionary implements  Dictionary{
                             cur.children[c - '2'] = new TrieNode();
                         }
                         cur = cur.children[c - '2'];
+                        cur.word.add(line);
                     }
-                    cur.word.add(line);
 //                    cur.hasword = true;
                 }
             }
@@ -160,6 +160,14 @@ public class TreeDictionary implements  Dictionary{
             }
             res.add(str);
         }*/
-        return cur.word;
+        Set<String> res = new HashSet<>();
+        for (String str: cur.word) {
+            if (str.length() == signature.length()) {
+                res.add(str);
+            } else {
+                res.add(str.substring(0, signature.length()));
+            }
+        }
+        return res;
     }
 }
