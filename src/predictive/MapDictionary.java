@@ -4,10 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * The class MapDictionary is the another way to implement the Interface Dictionary.
@@ -19,7 +16,8 @@ public class MapDictionary implements Dictionary{
     Map<String, Set<String>> map;
 
     public MapDictionary(String path) {
-        map = new HashMap<>();
+//        map = new HashMap<>();
+        map = new TreeMap<>();
         File file =
 //                new File("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
 //                new File(ListDictionary.class.getResource("/predictive/words").getFile());
