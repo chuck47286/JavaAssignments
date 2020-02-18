@@ -18,8 +18,8 @@ public class TreeDictionaryTest {
     TreeDictionary td;
     @Before
     public void setUp() throws Exception {
-//        td = new TreeDictionary("/usr/share/dict/words");
-        td = new TreeDictionary("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
+        td = new TreeDictionary("/usr/share/dict/words");
+//        td = new TreeDictionary("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
     }
 
     @Test
