@@ -2,7 +2,10 @@ import java.util.List;
 
 public class GradientDescent {
 
-    public static final String DATA_FILE = "MacdonellDF.csv";
+//        public static final String DATA_FILE = "MacdonellDF.csv";
+    public static final String DATA_FILE =
+        "C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\IAI\\src\\MacdonellDF.csv";
+
 
     public static void main(String[] args) {
 
@@ -41,7 +44,7 @@ public class GradientDescent {
                 alpha=alpha/(y_j);
                 // Update the parameters for our equation.
                 w2 += alpha * (y_j - prediction) * x_j *x_j;
-                w1 += alpha * (y_j - prediction) * x_j;              
+                w1 += alpha * (y_j - prediction) * x_j;
                 w0 += alpha * (y_j - prediction);
 //                alpha=alpha/(y_j);
             }
