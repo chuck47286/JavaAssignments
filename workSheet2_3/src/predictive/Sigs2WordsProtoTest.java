@@ -7,24 +7,26 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * The class is to test the class Sigs2WordsList.
+ * The class is to the class Sigs2WordsProto.
  *
  * @author YuCheng
  * @version 2020-2-10
  */
-public class Sigs2WordsListTest {
-    ListDictionary ld;
+public class Sigs2WordsProtoTest {
+    PredictivePrototype pp;
     @Before
     public void setUp() throws Exception {
-        ld = new ListDictionary("/usr/share/dict/words");
+        pp = new PredictivePrototype();
     }
 
     @Test
     public void main() {
-        Set<String> actual = ld.signatureToWords("329");
+        Set<String> actual = PredictivePrototype.signatureToWords("329");
         Set<String> exp = new HashSet<>();
+//        [dbw, dax, daw, fax, day, fcy, fay]
         exp.add("dbw");
         exp.add("dax");
         exp.add("daw");

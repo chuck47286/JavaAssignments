@@ -1,48 +1,31 @@
 package predictive;
 
-import javafx.scene.layout.Priority;
-import jdk.nashorn.internal.objects.annotations.Function;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.HashSet;
-import java.util.PriorityQueue;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
- * The class TreeDictionary is another way to implement the Interface Dictionary.
+ * The class MapDictionary is the another way to implement the Interface Dictionary.
  *
  * @author YuCheng
  * @version 2020-2-10
  */
-public class TreeDictionary implements  Dictionary{
-    class TrieNode {
-        Set<String> word;
-//        PriorityQueue<String> word;
-        TrieNode[] children;
-//        boolean hasword;
-        public TrieNode() {
-            children = new TrieNode[8];
-            word = new HashSet<>();
-           /* word = new PriorityQueue<String>(new Comparator<String>(){
-                @Override
-                public int compare(String a, String b) {
-                    return a.length() - b.length();
-                }
-            });*/
-        }
-    }
-    TrieNode root;
-    public TreeDictionary(String path) {
-        root = new TrieNode();
+public class MapDictionary implements Dictionary{
+    Map<String, Set<String>> map;
+
+    public MapDictionary(String path) {
+//        map = new HashMap<>();
+        map = new TreeMap<>();
         File file =
 //                new File("C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\src\\predictive\\words");
 //                new File(ListDictionary.class.getResource("/predictive/words").getFile());
                 new File(
-//                        "/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"
+//                    "/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"
 //                        "/usr/share/dict/words"
                         path
                 );
@@ -55,21 +38,17 @@ public class TreeDictionary implements  Dictionary{
             while ((line = reader.readLine()) != null) {
                 line = line.toLowerCase();
                 if (isValidWord(line)) {
-                    String sig = wordToSignature(line);
                     /**
-                     * TrieNode is to store the word of the line if
-                     * it is the leaf node. Otherwise, it could DFS the
-                     * whole tire until the leaf node.
+                     * The hashmap would store the signature of the word as the
+                     * key, and the word of the same signature as the value.
+                     * So, the map would get or put the signature by the hash method
+                     * that is O(1) time complexity if the entry is not too much.
                      */
-                    TrieNode cur = root;
-                    for (char c: sig.toCharArray()) {
-                        if (cur.children[c - '2'] == null) {
-                            cur.children[c - '2'] = new TrieNode();
-                        }
-                        cur = cur.children[c - '2'];
-                        cur.word.add(line);
+                    String sig = wordToSignature(line);
+                    if (!map.containsKey(sig)) {
+                        map.put(sig, new HashSet<>());
                     }
-//                    cur.hasword = true;
+                    map.get(sig).add(line);
                 }
             }
         } catch (IOException e) {
@@ -82,6 +61,21 @@ public class TreeDictionary implements  Dictionary{
             }
         }
     }
+
+    /**
+     *
+     * @param signature The input of the signature of the String.
+     * @return All possible matching words.
+     */
+    @Override
+    public Set<String> signatureToWords(String signature) {
+        /*if (map.containsKey("signature")) {
+            return map.get(signature);
+        }
+        return new HashSet<>();*/
+        return map.getOrDefault(signature, new HashSet<>());
+    }
+
     /**
      *
      * @param line The input of the String word.
@@ -99,6 +93,8 @@ public class TreeDictionary implements  Dictionary{
         return true;
 
     }
+
+
     /**
      *
      * @param word The input of the word combination.
@@ -137,37 +133,4 @@ public class TreeDictionary implements  Dictionary{
         return sb.toString();
     }
 
-    /**
-     *
-     * @param signature The input of the signature.
-     * @return The set of String which the signature represents.
-     */
-    @Override
-    public Set<String> signatureToWords(String signature) {
-        TrieNode cur = root;
-        for (char c : signature.toCharArray()) {
-            if (cur.children[c - '2'] != null) {
-                cur = cur.children[c - '2'];
-            } else {
-                return new HashSet<String>();
-            }
-        }
-        /*Set<String> res = new HashSet<>();
-        while (!cur.word.isEmpty()) {
-            String str = cur.word.poll();
-            if (str.length() > signature.length()) {
-                break;
-            }
-            res.add(str);
-        }*/
-        Set<String> res = new HashSet<>();
-        for (String str: cur.word) {
-            if (str.length() == signature.length()) {
-                res.add(str);
-            } else {
-                res.add(str.substring(0, signature.length()));
-            }
-        }
-        return res;
-    }
 }

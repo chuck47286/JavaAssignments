@@ -3,11 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DataStructure/DataStructure.iml" filepath="$PROJECT_DIR$/DataStructure/DataStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IAI/IAI.iml" filepath="$PROJECT_DIR$/IAI/IAI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IAI/IAI_Solution1.iml" filepath="$PROJECT_DIR$/IAI/IAI_Solution1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Ics_homework/Ics_homework.iml" filepath="$PROJECT_DIR$/Ics_homework/Ics_homework.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaAssignments.iml" filepath="$PROJECT_DIR$/JavaAssignments.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaTutorial/JavaTutorial.iml" filepath="$PROJECT_DIR$/JavaTutorial/JavaTutorial.iml" />
       <module fileurl="file://$PROJECT_DIR$/workSheet2_1/workSheet2_1.iml" filepath="$PROJECT_DIR$/workSheet2_1/workSheet2_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/workSheet2_2/workSheet2_2.iml" filepath="$PROJECT_DIR$/workSheet2_2/workSheet2_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workSheet2_3/workSheet2_3.iml" filepath="$PROJECT_DIR$/workSheet2_3/workSheet2_3.iml" />
       <module fileurl="file://$PROJECT_DIR$/worksheet_02/worksheet_02.iml" filepath="$PROJECT_DIR$/worksheet_02/worksheet_02.iml" />
       <module fileurl="file://$PROJECT_DIR$/worksheet_03/worksheet_03.iml" filepath="$PROJECT_DIR$/worksheet_03/worksheet_03.iml" />
       <module fileurl="file://$PROJECT_DIR$/worksheet_04/worksheet_04.iml" filepath="$PROJECT_DIR$/worksheet_04/worksheet_04.iml" />

@@ -7,34 +7,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * The class is to test class PredictivePrototype.
+ * The class is to test the class MapDictionary.
  *
  * @author YuCheng
  * @version 2020-2-10
  */
-public class PredictivePrototypeTest {
-    PredictivePrototype pp1;
+public class MapDictionaryTest {
+    MapDictionary md;
     @Before
     public void setUp() throws Exception {
-        pp1 = new PredictivePrototype();
-    }
-
-    @Test
-    public void wordToSignature() {
-        String actual = PredictivePrototype.wordToSignature("home");
-//        String actual = PredictivePrototype.wordToSignature("HOME");
-
-        String exp = "4663";
-        assertEquals(exp, actual);
+        md = new MapDictionary("/usr/share/dict/words");
     }
 
     @Test
     public void signatureToWords() {
-        Set<String> actual = PredictivePrototype.signatureToWords("329");
+        Set<String> actual = md.signatureToWords("329");
         Set<String> exp = new HashSet<>();
-//        [dbw, dax, daw, fax, day, fcy, fay]
         exp.add("dbw");
         exp.add("dax");
         exp.add("daw");
@@ -43,5 +34,12 @@ public class PredictivePrototypeTest {
         exp.add("fcy");
         exp.add("fay");
         assertEquals(exp, actual);
+    }
+
+    @Test
+    public void wordToSignature() {
+        String actual = md.wordToSignature("home");
+        String exp = "4663";
+        assertEquals(actual, exp);
     }
 }

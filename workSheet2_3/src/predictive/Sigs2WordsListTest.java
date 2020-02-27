@@ -7,23 +7,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * The class Sigs2WordsTreeTest is to test the class Sigs2WordsTree.
+ * The class is to test the class Sigs2WordsList.
  *
  * @author YuCheng
  * @version 2020-2-10
  */
-public class Sigs2WordsTreeTest {
-    TreeDictionary td;
+public class Sigs2WordsListTest {
+    ListDictionary ld;
     @Before
     public void setUp() throws Exception {
-        td = new TreeDictionary("/usr/share/dict/words");
+        ld = new ListDictionary("/usr/share/dict/words");
     }
 
     @Test
     public void main() {
-        Set<String> actual = td.signatureToWords("329");
+        Set<String> actual = ld.signatureToWords("329");
         Set<String> exp = new HashSet<>();
         exp.add("dbw");
         exp.add("dax");

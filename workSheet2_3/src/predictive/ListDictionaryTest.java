@@ -7,23 +7,31 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * The class is to test the class MapDictionary.
+ * The class is to test the class ListDictionary.
  *
  * @author YuCheng
  * @version 2020-2-10
  */
-public class MapDictionaryTest {
-    MapDictionary md;
+public class ListDictionaryTest {
+    ListDictionary ld;
     @Before
     public void setUp() throws Exception {
-        md = new MapDictionary("/usr/share/dict/words");
+        ld = new ListDictionary("/usr/share/dict/words");
+    }
+
+    @Test
+    public void wordToSignature() {
+        String actual = ld.wordToSignature("home");
+        String exp = "4663";
+        assertEquals(actual, exp);
     }
 
     @Test
     public void signatureToWords() {
-        Set<String> actual = md.signatureToWords("329");
+        Set<String> actual = ld.signatureToWords("329");
         Set<String> exp = new HashSet<>();
         exp.add("dbw");
         exp.add("dax");
@@ -35,10 +43,5 @@ public class MapDictionaryTest {
         assertEquals(exp, actual);
     }
 
-    @Test
-    public void wordToSignature() {
-        String actual = md.wordToSignature("home");
-        String exp = "4663";
-        assertEquals(actual, exp);
-    }
+
 }

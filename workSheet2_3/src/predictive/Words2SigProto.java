@@ -1,9 +1,5 @@
 package predictive;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 /**
  * The class is the command-line programs to use a series of number to represent the word.
  *
