@@ -141,6 +141,7 @@ public class TreeDictionary implements  Dictionary{
     public Set<String> signatureToWords(String signature) {
         TrieNode cur = root;
         for (char c : signature.toCharArray()) {
+            if (!Character.isDigit(c)) continue;
             if (cur.children[c - '2'] != null) {
                 cur = cur.children[c - '2'];
             } else {

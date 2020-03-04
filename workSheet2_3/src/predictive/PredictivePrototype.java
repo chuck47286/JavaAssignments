@@ -21,7 +21,7 @@ public class PredictivePrototype {
      */
     public static String wordToSignature(String word) {
         if (word == null || word.length() == 0) {
-            return " ";
+            return "";
         }
         /**
          * The advantage of StringBuffer than String is saving memory and
@@ -47,6 +47,8 @@ public class PredictivePrototype {
                 sb.append(8);
             } else if (c == 'w' || c == 'x' || c == 'y' || c == 'z') {
                 sb.append(9);
+            } else {
+                sb.append(" ");
             }
         }
         return sb.toString();
@@ -64,7 +66,7 @@ public class PredictivePrototype {
                     new Scanner(
                             new File(
 //                                    "/home/chuck/IdeaProjects/JavaAssignments/src/predictive/words"
-                                    "/usr/share/dict/words"
+                                    "C:\\Users\\Administrator.PC-20190121EABW\\IdeaProjects\\JavaAssignments\\workSheet2_3\\src\\predictive\\words"
                             ));
             while (sc.hasNext()) {
                 String line = sc.nextLine().toLowerCase();
