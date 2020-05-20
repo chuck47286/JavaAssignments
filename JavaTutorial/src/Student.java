@@ -35,13 +35,15 @@ public class Student implements Comparable<Student>{
 
     @Override
     public int compareTo(Student o) {
-        /*if (this.surname.compareTo(o.getSurname()) > 0) {
-            return -1;
-        } else if (this.surname.compareTo(o.getSurname()) < 0) {
-            return 1;
-        } else {
-            return 0;
-        }*/
+        // 这个是ascii从大到小的排列 surname
+//        if (this.surname.compareTo(o.getSurname()) > 0) {
+//            return -1;
+//        } else if (this.surname.compareTo(o.getSurname()) < 0) {
+//            return 1;
+//        } else {
+//            return 0;
+//        }
+        // 这个就是按照名字的从小到大
         return this.surname.compareTo(o.getSurname());
     }
 
