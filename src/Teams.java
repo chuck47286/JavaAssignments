@@ -19,7 +19,7 @@ public class Teams {
     /**
      * Constructor takes an array of Student objects.
      *
-     * @param students An array o Students object.
+     * @param students An array of Students object.
      */
     public Teams(Student[] students) {
         team = new HashMap<>();
@@ -35,9 +35,9 @@ public class Teams {
                 team.put(team_student, new PriorityQueue<Student>());
             }
             team.get(team_student).offer(student);
-            if (team.get(team_student).size() > k) {
-                team.get(team_student).poll();
-            }
+//            if (team.get(team_student).size() > k) {
+//                team.get(team_student).poll();
+//            }
         }
 
 //            members = new PriorityQueue<Student>(k, new Comparator<Student>() {

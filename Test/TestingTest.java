@@ -67,9 +67,9 @@ class TestingTest {
         Assertions.assertEquals(exres, acres);
     }
     /**
-     * (i) duplicate element only appears in the one of input lists in the last place
-     * (ii) [1, 2, 3] [3]
-     * (iii) [1, 2]
+     * (i) input lists have same elements
+     * (ii) [1, 2, 3] [1, 2, 3]
+     * (iii) []
      */
     @Test
     void unique3() {
@@ -93,16 +93,29 @@ class TestingTest {
         Assertions.assertEquals(exres, acres);
     }
     /**
-     * (i) input lists do not have duplicate element and whether output lists is sorted in ascending order
-     * (ii) [1, 2, 3] [0]
-     * (iii) [0, 1, 2, 3]
+     * (i) One of input lists is empty
+     * (ii) [1, 2, 3] []
+     * (iii) [1, 2, 3]
      */
     @Test
     void unique5() {
         List<Integer> a = Arrays.asList(1, 2, 3);
-        List<Integer> b = Arrays.asList(0);
+        List<Integer> b = Arrays.asList();
         List<Integer> acres = test5.unique(a, b);
-        List<Integer> exres = Arrays.asList(0, 1, 2, 3);
+        List<Integer> exres = Arrays.asList( 1, 2, 3);
+        Assertions.assertEquals(exres, acres);
+    }
+    /**
+     * (i) one of input lists is empty
+     * (ii) [] [1, 2, 3]
+     * (iii) [1, 2, 3]
+     */
+    @Test
+    void unique6() {
+        List<Integer> a = new ArrayList<>();
+        List<Integer> b = Arrays.asList(1 ,2 ,3);
+        List<Integer> acres = test6.unique(a, b);
+        List<Integer> exres = Arrays.asList(1, 2, 3 );
         Assertions.assertEquals(exres, acres);
     }
     /**
@@ -111,63 +124,50 @@ class TestingTest {
      * (iii) []
      */
     @Test
-    void unique6() {
-        List<Integer> a = new ArrayList<>();
-        List<Integer> b = new ArrayList<>();
-        List<Integer> acres = test6.unique(a, b);
-        List<Integer> exres = new ArrayList<>();
-        Assertions.assertEquals(exres, acres);
-    }
-    /**
-     * (i) unique element appears in the last place in one of the input lists
-     * (ii) [1, 2, 3] [1, 2]
-     * (iii) [3]
-     */
-    @Test
     void unique7() {
-        List<Integer> a = Arrays.asList(1, 2, 3);
-        List<Integer> b = Arrays.asList(1, 2);
+        List<Integer> a = Arrays.asList();
+        List<Integer> b = Arrays.asList();
         List<Integer> acres = test7.unique(a, b);
-        List<Integer> exres = Arrays.asList(3);
+        List<Integer> exres = Arrays.asList();
         Assertions.assertEquals(exres, acres);
     }
     /**
-     * (i) unique element appears in the first place in one of the input lists
-     * (ii) [1, 2, 3] [2, 3]
-     * (iii) [1]
+     * (i) one of input lists is null
+     * (ii) [1, 2, 3] null
+     * (iii) [1, 2, 3]
      */
     @Test
     void unique8() {
         List<Integer> a = Arrays.asList(1, 2, 3);
-        List<Integer> b = Arrays.asList(2, 3);
-        List<Integer> acres = test8.unique(a, b);
-        List<Integer> exres = Arrays.asList(1);
+        List<Integer> b = null;
+        List<Integer> acres = Arrays.asList(1, 2, 3);
+        List<Integer> exres = Arrays.asList(1, 2, 3);
         Assertions.assertEquals(exres, acres);
     }
     /**
-     * (i) input lists has same elements
-     * (ii) [1, 2, 3] [1, 2, 3]
-     * (iii) []
-     */
-    @Test
-    void unique9() {
-        List<Integer> a = Arrays.asList(1, 2, 3);
-        List<Integer> b = Arrays.asList(1, 2, 3);
-        List<Integer> acres = test9.unique(a, b);
-        List<Integer> exres = new ArrayList<>();
-        Assertions.assertEquals(exres, acres);
-    }
-    /**
-     * (i) one of input lists
-     * (ii) [1, 2, 3] []
+     * (i) one of input lists is null
+     * (ii) null [1, 2, 3]
      * (iii) [1, 2, 3]
      */
     @Test
+    void unique9() {
+        List<Integer> a = null;
+        List<Integer> b = Arrays.asList(1, 2, 3);
+        List<Integer> acres = test9.unique(a, b);
+        List<Integer> exres = Arrays.asList(1, 2, 3);
+        Assertions.assertEquals(exres, acres);
+    }
+    /**
+     * (i) both of input lists are null
+     * (ii) null null
+     * (iii) null
+     */
+    @Test
     void unique10() {
-        List<Integer> a = Arrays.asList(1, 2, 3);
-        List<Integer> b = new ArrayList<>();
+        List<Integer> a = null;
+        List<Integer> b = null;
         List<Integer> acres = test10.unique(a, b);
-        List<Integer> exres = Arrays.asList(1, 2 , 3);
+        List<Integer> exres = null;
         Assertions.assertEquals(exres, acres);
     }
 

@@ -6,8 +6,8 @@
  */
 public class Recursion {
     static List<Integer> unique(List<Integer> a, List<Integer> b) {
-        if (a.isEmpty()) return b;
-        if (b.isEmpty()) return a;
+        if (a == null || a.isEmpty()) return b;
+        if (b == null || b.isEmpty()) return a;
         if (a.getHead() < b.getHead()) {
             return new List<>(a.getHead(), unique(a.getTail(), b));
         } else if (a.getHead() == b.getHead()) {

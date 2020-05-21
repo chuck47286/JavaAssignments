@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class Testing {
     static List<Integer> unique(List<Integer> a, List<Integer> b) {
+        if (a == null) return b;
+        if (b == null) return a;
         List<Integer> ans = new ArrayList<>();
         int lena = a.size(), lenb = b.size();
         int pa = 0, pb = 0;
