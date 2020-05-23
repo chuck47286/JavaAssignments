@@ -49,11 +49,11 @@ public class AngelsGraph extends Application {
     /**
      * Center_x2 is the x of the center of the second circle in the panel.
      */
-    private static final int Center_x2 = 1100;
+//    private static final int Center_x2 = 1100;
     /**
      * Center_y2 is the x of the center of the second circle in the panel.
      */
-    private static final int Center_y2 = 450;
+//    private static final int Center_y2 = 450;
     /**
      * The pointer[] is the array to store x and y of the two pointer.
      */
